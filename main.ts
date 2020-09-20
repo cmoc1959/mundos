@@ -74,6 +74,7 @@ function Crea_alien () {
 }
 function Nivel_8 () {
     nivel = 8
+    bichos = nivel
     Tiempo_añadido()
     game.setDialogTextColor(9)
     game.setDialogCursor(img`
@@ -143,7 +144,9 @@ function Nivel_8 () {
         222222222222222222222
         `, [myTiles.transparency16,sprites.dungeon.floorLight2,sprites.vehicle.roadHorizontal,sprites.vehicle.roadVertical,sprites.vehicle.roadTurn1,sprites.vehicle.roadTurn2,sprites.vehicle.roadTurn3,sprites.vehicle.roadTurn4,myTiles.tile1,sprites.vehicle.roadIntersection3,sprites.vehicle.roadIntersection1,sprites.vehicle.roadIntersection2,sprites.vehicle.roadIntersection4], TileScale.Sixteen))
     Claus.setPosition(184, 88)
-    Crea_alien()
+    for (let index = 0; index < nivel; index++) {
+        Crea_alien()
+    }
     energia_8 = sprites.create(img`
         5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
         5 2 2 2 5 5 2 2 2 2 5 5 2 2 2 5 
@@ -165,57 +168,61 @@ function Nivel_8 () {
     energia_8.setPosition(104, 312)
 }
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Premio, function (sprite, otherSprite) {
-    music.magicWand.play()
-    if (otherSprite == cofre) {
-        cofre.destroy()
-        info.changeScoreBy(1)
-        Nivel_2()
-    } else if (otherSprite == pc) {
-        pc.destroy()
-        info.changeScoreBy(2)
-        Nivel_3()
-    } else if (otherSprite == estante) {
-        estante.destroy()
-        info.changeScoreBy(3)
-        Nivel_4()
-    } else if (otherSprite == perla) {
-        perla.destroy()
-        info.changeScoreBy(4)
-        Nivel_5()
-    } else if (otherSprite == energia_5) {
-        energia_5.destroy()
-        info.changeScoreBy(5)
-        Nivel_6()
-    } else if (otherSprite == energia_6) {
-        energia_6.destroy()
-        info.changeScoreBy(6)
-        Nivel_7()
-    } else if (otherSprite == energia_7) {
-        energia_7.destroy()
-        info.changeScoreBy(7)
-        Nivel_8()
-    } else if (otherSprite == energia_8) {
-        energia_8.destroy()
-        info.changeScoreBy(8)
-        Nivel_9()
-    } else if (otherSprite == energia_9) {
-        energia_9.destroy()
-        info.changeScoreBy(9)
-        Nivel_10()
-    } else if (otherSprite == energia_10) {
-        energia_10.destroy()
-        info.changeScoreBy(10)
-        Nivel_11()
-    } else if (otherSprite == energia_11) {
-        energia_11.destroy()
-        info.changeScoreBy(11)
-        Nivel_12()
-    } else if (otherSprite == energia_12) {
-        energia_12.destroy()
-        info.changeScoreBy(12)
-        game.over(true, effects.confetti)
+    if (bichos == 0) {
+        music.magicWand.play()
+        if (otherSprite == cofre) {
+            if (bichos == 0) {
+                cofre.destroy()
+                info.changeScoreBy(1)
+                Nivel_2()
+            }
+        } else if (otherSprite == pc) {
+            pc.destroy()
+            info.changeScoreBy(2)
+            Nivel_3()
+        } else if (otherSprite == estante) {
+            estante.destroy()
+            info.changeScoreBy(3)
+            Nivel_4()
+        } else if (otherSprite == perla) {
+            perla.destroy()
+            info.changeScoreBy(4)
+            Nivel_5()
+        } else if (otherSprite == energia_5) {
+            energia_5.destroy()
+            info.changeScoreBy(5)
+            Nivel_6()
+        } else if (otherSprite == energia_6) {
+            energia_6.destroy()
+            info.changeScoreBy(6)
+            Nivel_7()
+        } else if (otherSprite == energia_7) {
+            energia_7.destroy()
+            info.changeScoreBy(7)
+            Nivel_8()
+        } else if (otherSprite == energia_8) {
+            energia_8.destroy()
+            info.changeScoreBy(8)
+            Nivel_9()
+        } else if (otherSprite == energia_9) {
+            energia_9.destroy()
+            info.changeScoreBy(9)
+            Nivel_10()
+        } else if (otherSprite == energia_10) {
+            energia_10.destroy()
+            info.changeScoreBy(10)
+            Nivel_11()
+        } else if (otherSprite == energia_11) {
+            energia_11.destroy()
+            info.changeScoreBy(11)
+            Nivel_12()
+        } else if (otherSprite == energia_12) {
+            energia_12.destroy()
+            info.changeScoreBy(12)
+            game.over(true, effects.confetti)
+        }
+        puntuacion = info.score()
     }
-    puntuacion = info.score()
 })
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     foton = 0
@@ -244,6 +251,7 @@ function Crea_nave () {
 }
 function Nivel_6 () {
     nivel = 6
+    bichos = nivel
     Tiempo_añadido()
     game.setDialogTextColor(9)
     game.setDialogCursor(img`
@@ -313,7 +321,9 @@ function Nivel_6 () {
         222222222222222222222
         `, [myTiles.transparency16,sprites.vehicle.roadVertical,sprites.vehicle.roadTurn3,sprites.vehicle.roadHorizontal,sprites.vehicle.roadTurn4,sprites.vehicle.roadTurn1,sprites.vehicle.roadIntersection2,sprites.vehicle.roadTurn2,sprites.vehicle.roadIntersection3,myTiles.tile1,sprites.vehicle.roadIntersection4,sprites.vehicle.roadIntersection1,sprites.castle.tilePath5], TileScale.Sixteen))
     Colocacion(Claus)
-    Crea_alien()
+    for (let index = 0; index < nivel; index++) {
+        Crea_alien()
+    }
     energia_6 = sprites.create(img`
         . . . . . . . . . . . . . . . . 
         . . . . . . 4 4 4 4 . . . . . . 
@@ -342,6 +352,7 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
 })
 function Nivel_7 () {
     nivel = 7
+    bichos = nivel
     Tiempo_añadido()
     game.setDialogTextColor(9)
     game.setDialogCursor(img`
@@ -416,7 +427,9 @@ function Nivel_7 () {
         22222222222222222222222222222222
         `, [myTiles.transparency16,sprites.builtin.brick,sprites.vehicle.roadTurn1,sprites.vehicle.roadTurn2,sprites.vehicle.roadVertical,sprites.vehicle.roadHorizontal,sprites.vehicle.roadIntersection3,sprites.vehicle.roadIntersection2,sprites.vehicle.roadTurn3,sprites.vehicle.roadIntersection1,sprites.vehicle.roadTurn4,sprites.vehicle.roadIntersection4], TileScale.Sixteen))
     Colocacion(Claus)
-    Crea_alien()
+    for (let index = 0; index < nivel; index++) {
+        Crea_alien()
+    }
     energia_7 = sprites.create(img`
         . . . . . . . . . . . . . . . . 
         . . . . . . 6 6 6 6 . . . . . . 
@@ -467,6 +480,7 @@ function Crea_Claus () {
 }
 function Nivel_10 () {
     nivel = 10
+    bichos = nivel
     Tiempo_añadido()
     game.setDialogTextColor(9)
     game.setDialogCursor(img`
@@ -546,7 +560,9 @@ function Nivel_10 () {
         22222222222222222222222222222
         `, [myTiles.transparency16,myTiles.tile1,sprites.vehicle.roadVertical,sprites.vehicle.roadHorizontal,sprites.vehicle.roadIntersection3,sprites.vehicle.roadTurn2,sprites.vehicle.roadTurn3,sprites.vehicle.roadIntersection2,sprites.vehicle.roadTurn1,sprites.vehicle.roadIntersection1,sprites.vehicle.roadTurn4,sprites.vehicle.roadIntersection4,sprites.dungeon.floorDark1], TileScale.Sixteen))
     Claus.setPosition(56, 56)
-    Crea_alien()
+    for (let index = 0; index < nivel; index++) {
+        Crea_nave()
+    }
     energia_10 = sprites.create(img`
         3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
         3 7 7 7 3 3 9 9 9 9 3 3 7 7 7 3 
@@ -648,6 +664,7 @@ function Fotones (direccion: number) {
 }
 function Nivel_9 () {
     nivel = 9
+    bichos = nivel
     Tiempo_añadido()
     game.setDialogTextColor(9)
     game.setDialogCursor(img`
@@ -727,7 +744,9 @@ function Nivel_9 () {
         22222222222222222222222222222
         `, [myTiles.transparency16,myTiles.tile1,sprites.vehicle.roadVertical,sprites.vehicle.roadHorizontal,sprites.vehicle.roadTurn2,sprites.vehicle.roadTurn4,sprites.vehicle.roadTurn1,sprites.vehicle.roadTurn3,sprites.vehicle.roadIntersection1,sprites.vehicle.roadIntersection3,sprites.vehicle.roadIntersection4,sprites.vehicle.roadIntersection2,sprites.dungeon.darkGroundCenter], TileScale.Sixteen))
     Claus.setPosition(184, 120)
-    Crea_alien()
+    for (let index = 0; index < nivel; index++) {
+        Crea_alien()
+    }
     energia_9 = sprites.create(img`
         5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
         5 f f f 5 5 1 1 1 1 5 5 f f f 5 
@@ -750,6 +769,7 @@ function Nivel_9 () {
 }
 function Nivel_4 () {
     nivel = 4
+    bichos = nivel
     Tiempo_añadido()
     game.setDialogTextColor(9)
     game.setDialogCursor(img`
@@ -809,7 +829,9 @@ function Nivel_4 () {
         2 2 2 2 2 2 2 2 2 2 2 2 2 2 
         `, [myTiles.transparency16,sprites.dungeon.floorDarkDiamond,myTiles.tile1,sprites.vehicle.roadHorizontal,sprites.vehicle.roadVertical,sprites.vehicle.roadTurn3,sprites.vehicle.roadTurn1,sprites.vehicle.roadTurn2,sprites.vehicle.roadTurn4,sprites.vehicle.roadIntersection3,sprites.vehicle.roadIntersection2,sprites.vehicle.roadIntersection1,sprites.vehicle.roadIntersection4], TileScale.Sixteen))
     Colocacion(Claus)
-    Crea_alien()
+    for (let index = 0; index < nivel; index++) {
+        Crea_alien()
+    }
     perla = sprites.create(img`
         . . . . . f c c c c f . . . . . 
         . . c c f b b 3 3 b b f c c . . 
@@ -829,6 +851,11 @@ function Nivel_4 () {
         . . f f f f f f f f f f f f . . 
         `, SpriteKind.Premio)
     Colocacion(perla)
+}
+function Cambia_naves () {
+    for (let index = 0; index < 4; index++) {
+        nave.destroy()
+    }
 }
 function Colocacion (mySprite: Sprite) {
     tipo_pista = randint(1, 10)
@@ -913,6 +940,7 @@ function Leyenda () {
 }
 function Nivel_5 () {
     nivel = 5
+    bichos = nivel
     Tiempo_añadido()
     game.setDialogTextColor(9)
     game.setDialogCursor(img`
@@ -973,7 +1001,9 @@ function Nivel_5 () {
         2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
         `, [myTiles.transparency16,sprites.dungeon.floorLight0,sprites.vehicle.roadHorizontal,sprites.vehicle.roadVertical,sprites.vehicle.roadIntersection4,sprites.vehicle.roadTurn3,sprites.vehicle.roadIntersection3,sprites.vehicle.roadTurn4,sprites.vehicle.roadIntersection2,sprites.vehicle.roadTurn2,sprites.vehicle.roadTurn1], TileScale.Sixteen))
     Colocacion(Claus)
-    Crea_alien()
+    for (let index = 0; index < nivel; index++) {
+        Crea_alien()
+    }
     energia_5 = sprites.create(img`
         6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 
         6 9 9 9 6 6 9 9 9 9 6 6 9 9 9 6 
@@ -1035,6 +1065,7 @@ function Colores_fondo () {
 }
 function Nivel_12 () {
     nivel = 12
+    bichos = nivel
     Tiempo_añadido()
     game.setDialogTextColor(9)
     game.setDialogCursor(img`
@@ -1118,7 +1149,9 @@ function Nivel_12 () {
         22222222222222222222222222222222222222222
         `, [myTiles.transparency16,myTiles.tile1,sprites.dungeon.floorDark2,sprites.vehicle.roadTurn1,sprites.vehicle.roadTurn3,sprites.vehicle.roadVertical,sprites.vehicle.roadHorizontal,sprites.vehicle.roadTurn2,sprites.vehicle.roadTurn4,sprites.vehicle.roadIntersection4,sprites.vehicle.roadIntersection2,sprites.vehicle.roadIntersection3,sprites.vehicle.roadIntersection1], TileScale.Sixteen))
     Claus.setPosition(24, 24)
-    Crea_alien()
+    for (let index = 0; index < nivel; index++) {
+        Crea_nave()
+    }
     energia_12 = sprites.create(img`
         1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
         1 d d d 1 1 b b b b 1 1 d d d 1 
@@ -1141,6 +1174,7 @@ function Nivel_12 () {
 }
 function Nivel_1 () {
     nivel = 1
+    bichos = nivel
     game.setDialogTextColor(9)
     game.setDialogCursor(img`
         . b b b b b b b b b b b b b b . 
@@ -1198,7 +1232,9 @@ function Nivel_1 () {
         2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
         `, [myTiles.transparency16,sprites.vehicle.roadTurn1,sprites.vehicle.roadTurn2,sprites.vehicle.roadTurn3,sprites.vehicle.roadTurn4,sprites.vehicle.roadIntersection3,sprites.vehicle.roadIntersection1,sprites.vehicle.roadIntersection2,sprites.vehicle.roadIntersection4,sprites.vehicle.roadVertical,sprites.vehicle.roadHorizontal,sprites.dungeon.greenOuterNorthEast,sprites.dungeon.greenOuterSouthWest,sprites.dungeon.greenOuterSouthEast,sprites.dungeon.greenOuterNorthWest,sprites.dungeon.greenOuterNorth0,sprites.dungeon.greenOuterEast0,sprites.dungeon.greenOuterSouth0,sprites.dungeon.greenOuterWest1], TileScale.Sixteen))
     Colocacion(Claus)
-    Crea_alien()
+    for (let index = 0; index < nivel; index++) {
+        Crea_alien()
+    }
     cofre = sprites.create(img`
         . b b b b b b b b b b b b b b . 
         b e 4 4 4 4 4 4 4 4 4 4 4 4 4 b 
@@ -1248,6 +1284,7 @@ function Selecciona_Nivel (nivel: number) {
 }
 function Nivel_2 () {
     nivel = 2
+    bichos = nivel
     Tiempo_añadido()
     game.setDialogTextColor(9)
     game.setDialogCursor(img`
@@ -1306,7 +1343,9 @@ function Nivel_2 () {
         2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
         `, [myTiles.transparency16,sprites.dungeon.greenOuterNorthWest,sprites.dungeon.greenOuterNorth0,sprites.dungeon.greenOuterSouth0,sprites.dungeon.greenOuterEast0,sprites.dungeon.greenOuterWest1,sprites.dungeon.greenOuterNorthEast,sprites.dungeon.greenOuterSouthEast,sprites.dungeon.greenOuterSouthWest,sprites.vehicle.roadTurn1,sprites.vehicle.roadTurn2,sprites.vehicle.roadTurn3,sprites.vehicle.roadTurn4,sprites.vehicle.roadVertical,sprites.vehicle.roadHorizontal,sprites.vehicle.roadIntersection1,sprites.vehicle.roadIntersection3,sprites.vehicle.roadIntersection4,sprites.vehicle.roadIntersection2], TileScale.Sixteen))
     Colocacion(Claus)
-    Crea_alien()
+    for (let index = 0; index < nivel; index++) {
+        Crea_alien()
+    }
     pc = sprites.create(img`
         . . . b b b b b b b b b . . . . 
         . . b 1 d d d d d d d 1 b . . . 
@@ -1329,6 +1368,7 @@ function Nivel_2 () {
 }
 function Nivel_11 () {
     nivel = 11
+    bichos = nivel
     Tiempo_añadido()
     game.setDialogTextColor(9)
     game.setDialogCursor(img`
@@ -1418,7 +1458,9 @@ function Nivel_11 () {
         2222222222222222222222222222222222222
         `, [myTiles.transparency16,myTiles.tile1,sprites.vehicle.roadHorizontal,sprites.vehicle.roadVertical,sprites.castle.shrub,sprites.vehicle.roadIntersection2,sprites.vehicle.roadTurn3,sprites.vehicle.roadTurn2,sprites.vehicle.roadIntersection3,sprites.vehicle.roadTurn4,sprites.vehicle.roadTurn1,sprites.vehicle.roadIntersection1,sprites.vehicle.roadIntersection4], TileScale.Sixteen))
     Claus.setPosition(376, 696)
-    Crea_alien()
+    for (let index = 0; index < nivel; index++) {
+        Crea_nave()
+    }
     energia_11 = sprites.create(img`
         f f f f f f f f f f f f f f f f 
         f 7 7 7 f f 9 9 9 9 f f 7 7 7 f 
@@ -1450,6 +1492,7 @@ function Tiempo_añadido () {
 }
 function Nivel_3 () {
     nivel = 3
+    bichos = nivel
     Tiempo_añadido()
     game.setDialogTextColor(9)
     game.setDialogCursor(img`
@@ -1516,7 +1559,9 @@ function Nivel_3 () {
         2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
         `, [myTiles.transparency16,sprites.vehicle.roadTurn1,sprites.vehicle.roadTurn2,sprites.vehicle.roadTurn3,sprites.vehicle.roadTurn4,sprites.vehicle.roadIntersection1,sprites.vehicle.roadIntersection4,sprites.vehicle.roadVertical,sprites.vehicle.roadHorizontal,sprites.vehicle.roadIntersection2,sprites.vehicle.roadIntersection3], TileScale.Sixteen))
     Colocacion(Claus)
-    Crea_alien()
+    for (let index = 0; index < nivel; index++) {
+        Crea_alien()
+    }
     estante = sprites.create(img`
         .cccccccccccccccccccccc.
         cbddddddddddddddddddddbc
@@ -1600,14 +1645,21 @@ function Niveles () {
         Nivel_1()
     }
 }
+function Cambia_aliens () {
+    for (let index = 0; index < 4; index++) {
+        alien.destroy()
+    }
+}
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
     music.baDing.play()
     otherSprite.destroy(effects.spray, 500)
     if (otherSprite == alien) {
         info.changeScoreBy(1)
+        bichos += -1
     }
     if (otherSprite == nave) {
         info.changeScoreBy(2)
+        bichos += -1
     }
 })
 let tiempo = 0
@@ -1629,6 +1681,7 @@ let estante: Sprite = null
 let pc: Sprite = null
 let cofre: Sprite = null
 let energia_8: Sprite = null
+let bichos = 0
 let alien: Sprite = null
 let tipo_alien = 0
 let Tiempos: number[] = []
