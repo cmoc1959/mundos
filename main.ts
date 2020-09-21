@@ -30,6 +30,7 @@ function Crea_alien () {
             ........................
             ........................
             `, SpriteKind.Enemy)
+        alien.follow(Claus, 30)
     } else if (tipo_alien == 2) {
         alien = sprites.create(img`
             . . . . . . . . . . . . . . . . 
@@ -49,7 +50,8 @@ function Crea_alien () {
             . . . f f f f f f f c c c c c . 
             . . . . . . . . . . . . c c c c 
             `, SpriteKind.Enemy)
-    } else if (tipo_alien == 2) {
+        alien.follow(Claus, 30)
+    } else if (tipo_alien == 3) {
         alien = sprites.create(img`
             . . . . . c c c c c c c . . . . 
             . . . . c 6 7 7 7 7 7 6 c . . . 
@@ -68,8 +70,8 @@ function Crea_alien () {
             . f 6 1 1 1 1 1 6 6 6 6 c . . . 
             . . f f c c c c c c c c . . . . 
             `, SpriteKind.Enemy)
+        alien.follow(Claus, 30)
     }
-    alien.follow(Claus, 30)
     Colocacion(alien)
 }
 function Nivel_8 () {
@@ -168,14 +170,15 @@ function Nivel_8 () {
     energia_8.setPosition(104, 312)
 }
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Premio, function (sprite, otherSprite) {
+    if (bichos < 0) {
+        bichos = 0
+    }
     if (bichos == 0) {
         music.magicWand.play()
         if (otherSprite == cofre) {
-            if (bichos == 0) {
-                cofre.destroy()
-                info.changeScoreBy(1)
-                Nivel_2()
-            }
+            cofre.destroy()
+            info.changeScoreBy(1)
+            Nivel_2()
         } else if (otherSprite == pc) {
             pc.destroy()
             info.changeScoreBy(2)
