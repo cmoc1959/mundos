@@ -30,7 +30,9 @@ function Crea_alien () {
             ........................
             ........................
             `, SpriteKind.Enemy)
-        alien.follow(Claus, 30)
+        bicho1 = 1
+        Colocacion(alien)
+        alien.follow(Claus, 20)
     } else if (tipo_alien == 2) {
         alien2 = sprites.create(img`
             . . . . . . . . . . . . . . . . 
@@ -50,7 +52,9 @@ function Crea_alien () {
             . . . f f f f f f f c c c c c . 
             . . . . . . . . . . . . c c c c 
             `, SpriteKind.Enemy)
-        alien2.follow(Claus, 30)
+        bicho2 = 1
+        Colocacion(alien2)
+        alien2.follow(Claus, 20)
     } else if (tipo_alien == 3) {
         alien3 = sprites.create(img`
             . . . . . c c c c c c c . . . . 
@@ -70,11 +74,13 @@ function Crea_alien () {
             . f 6 1 1 1 1 1 6 6 6 6 c . . . 
             . . f f c c c c c c c c . . . . 
             `, SpriteKind.Enemy)
-        alien3.follow(Claus, 30)
+        bicho3 = 1
+        Colocacion(alien3)
+        alien3.follow(Claus, 20)
     }
-    Colocacion(alien)
 }
 function Nivel_8 () {
+    Destruye_aliens()
     nivel = 8
     bichos = nivel
     Tiempo_añadido()
@@ -149,83 +155,70 @@ function Nivel_8 () {
     for (let index = 0; index < nivel; index++) {
         Crea_alien()
     }
-    neptuno = sprites.create(img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . 9 9 9 9 . . . . . . 
-        . . . . 9 9 9 8 8 9 9 9 . . . . 
-        . . . 9 9 9 9 9 9 9 9 9 9 . . . 
-        . . 8 9 9 9 9 8 8 8 1 1 9 9 . . 
-        . . 9 9 9 9 9 8 8 8 1 1 8 9 . . 
-        . 8 9 9 9 9 8 8 8 8 8 8 8 9 9 . 
-        . 8 9 9 9 8 8 8 9 9 9 9 8 9 9 . 
-        . 8 8 9 9 8 8 9 9 9 9 9 9 9 9 . 
-        . 8 8 9 9 8 8 9 9 9 9 9 9 9 9 . 
-        . . 8 8 9 9 8 9 9 9 9 9 8 9 . . 
-        . . 8 8 8 9 8 8 9 9 9 8 9 9 . . 
-        . . . 8 8 8 8 8 8 8 8 8 9 . . . 
-        . . . . 8 8 8 8 8 8 8 8 . . . . 
-        . . . . . . 8 8 8 8 . . . . . . 
-        . . . . . . . . . . . . . . . . 
+    pluton = sprites.create(img`
+        . . b b b b . . 
+        . b d d d d b . 
+        b d d 3 d d d b 
+        b d 3 d d 1 d b 
+        c d 3 d d 1 d c 
+        c d d 1 1 d d c 
+        . b d d d d b . 
+        . . b b b b . . 
         `, SpriteKind.Premio)
-    neptuno.setPosition(104, 312)
+    pluton.setPosition(104, 312)
 }
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Premio, function (sprite, otherSprite) {
-    if (bichos < 0) {
-        bichos = 0
+    music.magicWand.play()
+    if (otherSprite == venus) {
+        venus.destroy()
+        info.changeScoreBy(1)
+        Nivel_2()
+    } else if (otherSprite == tierra) {
+        tierra.destroy()
+        info.changeScoreBy(2)
+        Nivel_3()
+    } else if (otherSprite == marte) {
+        marte.destroy()
+        info.changeScoreBy(3)
+        Nivel_4()
+    } else if (otherSprite == jupiter) {
+        jupiter.destroy()
+        info.changeScoreBy(4)
+        Nivel_5()
+    } else if (otherSprite == saturno) {
+        saturno.destroy()
+        info.changeScoreBy(5)
+        Nivel_6()
+    } else if (otherSprite == urano) {
+        urano.destroy()
+        info.changeScoreBy(6)
+        Nivel_7()
+    } else if (otherSprite == neptuno) {
+        neptuno.destroy()
+        info.changeScoreBy(7)
+        Nivel_8()
+    } else if (otherSprite == pluton) {
+        pluton.destroy()
+        info.changeScoreBy(8)
+        Nivel_9()
+    } else if (otherSprite == sistema_solar) {
+        sistema_solar.destroy()
+        info.changeScoreBy(9)
+        Nivel_10()
+    } else if (otherSprite == via_lactea) {
+        via_lactea.destroy()
+        info.changeScoreBy(10)
+        Nivel_11()
+    } else if (otherSprite == andromeda) {
+        andromeda.destroy()
+        info.changeScoreBy(11)
+        Nivel_12()
+    } else if (otherSprite == agujero_negro) {
+        agujero_negro.destroy()
+        info.changeScoreBy(12)
+        game.over(true, effects.confetti)
     }
-    if (bichos == 0) {
-        music.magicWand.play()
-        if (otherSprite == mercurio) {
-            mercurio.destroy()
-            info.changeScoreBy(1)
-            Nivel_2()
-        } else if (otherSprite == venus) {
-            venus.destroy()
-            info.changeScoreBy(2)
-            Nivel_3()
-        } else if (otherSprite == tierra) {
-            tierra.destroy()
-            info.changeScoreBy(3)
-            Nivel_4()
-        } else if (otherSprite == marte) {
-            marte.destroy()
-            info.changeScoreBy(4)
-            Nivel_5()
-        } else if (otherSprite == jupiter) {
-            jupiter.destroy()
-            info.changeScoreBy(5)
-            Nivel_6()
-        } else if (otherSprite == saturno) {
-            saturno.destroy()
-            info.changeScoreBy(6)
-            Nivel_7()
-        } else if (otherSprite == urano) {
-            urano.destroy()
-            info.changeScoreBy(7)
-            Nivel_8()
-        } else if (otherSprite == neptuno) {
-            neptuno.destroy()
-            info.changeScoreBy(8)
-            Nivel_9()
-        } else if (otherSprite == pluton) {
-            pluton.destroy()
-            info.changeScoreBy(9)
-            Nivel_10()
-        } else if (otherSprite == sistema_solar) {
-            sistema_solar.destroy()
-            info.changeScoreBy(10)
-            Nivel_11()
-        } else if (otherSprite == via_lactea) {
-            via_lactea.destroy()
-            info.changeScoreBy(11)
-            Nivel_12()
-        } else if (otherSprite == andromeda) {
-            andromeda.destroy()
-            info.changeScoreBy(12)
-            game.over(true, effects.confetti)
-        }
-        puntuacion = info.score()
-    }
+    puntuacion = info.score()
 })
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     foton = 0
@@ -253,6 +246,7 @@ function Crea_nave () {
     Colocacion(nave)
 }
 function Nivel_6 () {
+    Destruye_aliens()
     nivel = 6
     bichos = nivel
     Tiempo_añadido()
@@ -327,33 +321,48 @@ function Nivel_6 () {
     for (let index = 0; index < nivel; index++) {
         Crea_alien()
     }
-    saturno = sprites.create(img`
-        . . . . . . . . . . . . d . . . 
-        . . . . . . e e 4 4 d d d b . . 
-        . . . . e e e 4 4 4 4 b d d b . 
-        . . . e e e 4 4 4 4 4 e b d d b 
-        . . e e e 4 4 4 4 e e e 4 b d b 
-        . . e e 4 4 4 4 e e e 4 4 e d b 
-        . e e 4 4 4 4 e e e 4 4 e b b d 
-        . e 4 4 4 4 e e 4 4 4 4 e b d b 
-        . 4 4 4 4 e e 4 4 4 4 e b d b . 
-        . 4 4 4 e e e 4 4 4 e b d b 4 . 
-        . d 4 e e e 4 4 4 e b d b 4 . . 
-        d d e e e 4 4 4 e b d b 4 4 . . 
-        b d b 4 4 4 4 e b d b 2 4 . . . 
-        b d d b 4 e e b d b 4 4 . . . . 
-        . b d d b b b d b 4 . . . . . . 
-        . . b d d d d b . . . . . . . . 
+    urano = sprites.create(img`
+        . . . . . 9 9 9 9 9 9 . . . . . 
+        . . . 9 9 9 9 9 9 9 9 9 9 . . . 
+        . . 9 9 9 9 9 9 9 9 9 9 9 9 . . 
+        . 9 9 9 9 9 9 9 9 9 9 9 9 9 9 . 
+        9 9 9 9 9 9 9 9 1 1 9 9 9 9 9 9 
+        9 9 9 9 9 9 9 1 1 1 1 9 9 9 9 9 
+        9 9 9 9 9 9 9 9 1 1 9 9 9 9 9 9 
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+        f 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+        . f 9 9 9 9 9 9 9 9 9 9 9 9 9 . 
+        . f f 9 9 9 9 9 9 9 9 9 9 9 f . 
+        . . f f 9 9 9 9 9 9 9 9 f f f . 
+        . . . f f f f f f f f f f . . . 
+        . . . . . f f f f f f . . . . . 
         `, SpriteKind.Premio)
-    Colocacion(saturno)
+    Colocacion(urano)
 }
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
     Fotones(foton)
 })
+function Destruye_aliens () {
+    if (bicho1 == 1) {
+        alien.destroy()
+        bicho1 = 0
+    }
+    if (bicho2 == 1) {
+        alien2.destroy()
+        bicho2 = 0
+    }
+    if (bicho3 == 1) {
+        alien3.destroy()
+        bicho3 = 0
+    }
+}
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     foton = 2
 })
 function Nivel_7 () {
+    Destruye_aliens()
     nivel = 7
     bichos = nivel
     Tiempo_añadido()
@@ -433,25 +442,25 @@ function Nivel_7 () {
     for (let index = 0; index < nivel; index++) {
         Crea_alien()
     }
-    urano = sprites.create(img`
-        . . . . . 9 9 9 9 9 9 . . . . . 
+    neptuno = sprites.create(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . 9 9 9 9 . . . . . . 
+        . . . . 9 9 9 8 8 9 9 9 . . . . 
         . . . 9 9 9 9 9 9 9 9 9 9 . . . 
-        . . 9 9 9 9 9 9 9 9 9 9 9 9 . . 
-        . 9 9 9 9 9 9 9 9 9 9 9 9 9 9 . 
-        9 9 9 9 9 9 9 9 1 1 9 9 9 9 9 9 
-        9 9 9 9 9 9 9 1 1 1 1 9 9 9 9 9 
-        9 9 9 9 9 9 9 9 1 1 9 9 9 9 9 9 
-        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
-        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
-        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
-        f 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
-        . f 9 9 9 9 9 9 9 9 9 9 9 9 9 . 
-        . f f 9 9 9 9 9 9 9 9 9 9 9 f . 
-        . . f f 9 9 9 9 9 9 9 9 f f f . 
-        . . . f f f f f f f f f f . . . 
-        . . . . . f f f f f f . . . . . 
+        . . 8 9 9 9 9 8 8 8 1 1 9 9 . . 
+        . . 9 9 9 9 9 8 8 8 1 1 8 9 . . 
+        . 8 9 9 9 9 8 8 8 8 8 8 8 9 9 . 
+        . 8 9 9 9 8 8 8 9 9 9 9 8 9 9 . 
+        . 8 8 9 9 8 8 9 9 9 9 9 9 9 9 . 
+        . 8 8 9 9 8 8 9 9 9 9 9 9 9 9 . 
+        . . 8 8 9 9 8 9 9 9 9 9 8 9 . . 
+        . . 8 8 8 9 8 8 9 9 9 8 9 9 . . 
+        . . . 8 8 8 8 8 8 8 8 8 9 . . . 
+        . . . . 8 8 8 8 8 8 8 8 . . . . 
+        . . . . . . 8 8 8 8 . . . . . . 
+        . . . . . . . . . . . . . . . . 
         `, SpriteKind.Premio)
-    Colocacion(urano)
+    Colocacion(neptuno)
 }
 info.onCountdownEnd(function () {
     music.wawawawaa.play()
@@ -482,6 +491,7 @@ function Crea_Claus () {
     scene.cameraFollowSprite(Claus)
 }
 function Nivel_10 () {
+    Destruye_aliens()
     nivel = 10
     bichos = nivel
     Tiempo_añadido()
@@ -566,25 +576,25 @@ function Nivel_10 () {
     for (let index = 0; index < nivel; index++) {
         Crea_nave()
     }
-    sistema_solar = sprites.create(img`
-        3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
-        3 7 7 7 3 3 9 9 9 9 3 3 7 7 7 3 
-        3 7 7 3 3 9 9 c c 9 9 3 3 7 7 3 
-        3 7 3 3 9 9 c c 5 9 9 9 3 3 7 3 
-        3 3 3 9 9 9 9 c 5 5 9 9 9 3 3 3 
-        3 3 9 9 9 9 9 9 5 5 9 9 9 9 3 3 
-        3 9 9 9 5 5 5 5 2 5 9 9 c 9 9 3 
-        3 9 c 5 5 5 2 2 2 5 9 c c c 9 3 
-        3 9 c c c 9 5 2 2 2 5 5 5 c 9 3 
-        3 9 9 c 9 9 5 2 5 5 5 5 9 9 9 3 
-        3 3 9 9 9 9 5 5 9 9 9 9 9 9 3 3 
-        3 3 3 9 9 9 5 5 c 9 9 9 9 3 3 3 
-        3 7 3 3 9 9 9 5 c c 9 9 3 3 7 3 
-        3 7 7 3 3 9 9 c c 9 9 3 3 7 7 3 
-        3 7 7 7 3 3 9 9 9 9 3 3 7 7 7 3 
-        3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+    via_lactea = sprites.create(img`
+        f f f f f f f f f f f f f f f f 
+        f 7 7 7 f f 9 9 9 9 f f 7 7 7 f 
+        f 7 7 f f 9 9 c c 9 9 f f 7 7 f 
+        f 7 f f 9 9 c c 5 9 9 9 f f 7 f 
+        f f f 9 9 9 9 c 5 5 9 9 9 f f f 
+        f f 9 9 9 9 9 9 5 5 9 9 9 9 f f 
+        f 9 9 9 5 5 5 5 c 5 9 9 c 9 9 f 
+        f 9 c 5 5 5 c c c 5 9 c c c 9 f 
+        f 9 c c c 9 5 c c c 5 5 5 c 9 f 
+        f 9 9 c 9 9 5 c 5 5 5 5 9 9 9 f 
+        f f 9 9 9 9 5 5 9 9 9 9 9 9 f f 
+        f f f 9 9 9 5 5 c 9 9 9 9 f f f 
+        f 7 f f 9 9 9 5 c c 9 9 f f 7 f 
+        f 7 7 f f 9 9 c c 9 9 f f 7 7 f 
+        f 7 7 7 f f 9 9 9 9 f f 7 7 7 f 
+        f f f f f f f f f f f f f f f f 
         `, SpriteKind.Premio)
-    sistema_solar.setPosition(88, 504)
+    via_lactea.setPosition(88, 504)
 }
 function Fotones (direccion: number) {
     if (direccion == 0) {
@@ -666,6 +676,7 @@ function Fotones (direccion: number) {
     }
 }
 function Nivel_9 () {
+    Destruye_aliens()
     nivel = 9
     bichos = nivel
     Tiempo_añadido()
@@ -742,19 +753,28 @@ function Nivel_9 () {
     for (let index = 0; index < nivel; index++) {
         Crea_alien()
     }
-    pluton = sprites.create(img`
-        . . b b b b . . 
-        . b d d d d b . 
-        b d d 3 d d d b 
-        b d 3 d d 1 d b 
-        c d 3 d d 1 d c 
-        c d d 1 1 d d c 
-        . b d d d d b . 
-        . . b b b b . . 
+    sistema_solar = sprites.create(img`
+        3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+        3 7 7 7 3 3 9 9 9 9 3 3 7 7 7 3 
+        3 7 7 3 3 9 9 c c 9 9 3 3 7 7 3 
+        3 7 3 3 9 9 c c 5 9 9 9 3 3 7 3 
+        3 3 3 9 9 9 9 c 5 5 9 9 9 3 3 3 
+        3 3 9 9 9 9 9 9 5 5 9 9 9 9 3 3 
+        3 9 9 9 5 5 5 5 2 5 9 9 c 9 9 3 
+        3 9 c 5 5 5 2 2 2 5 9 c c c 9 3 
+        3 9 c c c 9 5 2 2 2 5 5 5 c 9 3 
+        3 9 9 c 9 9 5 2 5 5 5 5 9 9 9 3 
+        3 3 9 9 9 9 5 5 9 9 9 9 9 9 3 3 
+        3 3 3 9 9 9 5 5 c 9 9 9 9 3 3 3 
+        3 7 3 3 9 9 9 5 c c 9 9 3 3 7 3 
+        3 7 7 3 3 9 9 c c 9 9 3 3 7 7 3 
+        3 7 7 7 3 3 9 9 9 9 3 3 7 7 7 3 
+        3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
         `, SpriteKind.Premio)
-    pluton.setPosition(376, 472)
+    sistema_solar.setPosition(376, 472)
 }
 function Nivel_4 () {
+    Destruye_aliens()
     nivel = 4
     bichos = nivel
     Tiempo_añadido()
@@ -819,25 +839,25 @@ function Nivel_4 () {
     for (let index = 0; index < nivel; index++) {
         Crea_alien()
     }
-    marte = sprites.create(img`
-        . . . . . . . b 4 . . . . . . . 
-        . . . . . b 4 4 4 4 4 . . . . . 
-        . . . . 4 4 4 4 4 4 4 4 . . . . 
-        . . . 4 4 4 4 4 4 4 4 4 4 . . . 
-        . . 4 4 4 4 4 4 4 4 4 4 4 4 . . 
-        . 4 4 4 4 4 4 b 4 4 4 4 4 4 4 . 
-        . b 4 b 4 b b b 4 4 4 4 4 4 4 . 
-        b 4 4 b b b b 4 4 4 4 4 4 4 4 b 
-        b 4 b b 4 b 4 4 4 b b 4 4 4 4 b 
-        . b 4 4 b 4 b b b b b b 4 4 b . 
-        . b 4 4 b b b b b b b b b 4 b . 
-        . . b 4 4 4 4 4 4 4 4 4 4 b . . 
-        . . . b 4 4 4 4 4 4 4 4 b . . . 
-        . . . . b 4 4 4 4 4 4 4 . . . . 
-        . . . . . b b 4 4 4 4 . . . . . 
-        . . . . . . . 4 b . . . . . . . 
+    jupiter = sprites.create(img`
+        . . . . . e e e e e e . . . . . 
+        . . . e e e e e e e e e e . . . 
+        . . d d d d d d d d d d d d . . 
+        . e e e e e e e e e e e e e e . 
+        . d d d d d d d d d d d d d d . 
+        e e e e e e e e e e e e e e e e 
+        e e e e e e e e e e e e e e e e 
+        d d d d d d d d d d d d d d d d 
+        d d d d d d d d d d d d d d d d 
+        e e e e e e e e e e e e e e e e 
+        e e e e e e e e e e e e e e e e 
+        . d d d d d d d d d d d d d d . 
+        . e e e e e e e e d d e d d . . 
+        . . e e e e e e e d d d d . . . 
+        . . . e e e e e e e e e e . . . 
+        . . . . . e e e e e e . . . . . 
         `, SpriteKind.Premio)
-    Colocacion(marte)
+    Colocacion(jupiter)
 }
 function Cambia_naves () {
     for (let index = 0; index < 4; index++) {
@@ -847,9 +867,13 @@ function Cambia_naves () {
 function Colocacion (mySprite: Sprite) {
     tipo_pista = randint(1, 10)
     if (tipo_pista == 1) {
-        tiles.placeOnRandomTile(mySprite, sprites.vehicle.roadHorizontal)
+        if (mySprite == Claus) {
+            tiles.placeOnRandomTile(mySprite, sprites.vehicle.roadHorizontal)
+        }
     } else if (tipo_pista == 2) {
-        tiles.placeOnRandomTile(mySprite, sprites.vehicle.roadVertical)
+        if (mySprite == Claus) {
+            tiles.placeOnRandomTile(mySprite, sprites.vehicle.roadVertical)
+        }
     } else if (tipo_pista == 3) {
         tiles.placeOnRandomTile(mySprite, sprites.vehicle.roadIntersection3)
     } else if (tipo_pista == 4) {
@@ -926,6 +950,7 @@ function Leyenda () {
     game.showLongText("Para poder viajar a través del universo debes encontrar los portales de hiper-espacio.", DialogLayout.Full)
 }
 function Nivel_5 () {
+    Destruye_aliens()
     nivel = 5
     bichos = nivel
     Tiempo_añadido()
@@ -991,25 +1016,25 @@ function Nivel_5 () {
     for (let index = 0; index < nivel; index++) {
         Crea_alien()
     }
-    jupiter = sprites.create(img`
-        . . . . . e e e e e e . . . . . 
-        . . . e e e e e e e e e e . . . 
-        . . d d d d d d d d d d d d . . 
-        . e e e e e e e e e e e e e e . 
-        . d d d d d d d d d d d d d d . 
-        e e e e e e e e e e e e e e e e 
-        e e e e e e e e e e e e e e e e 
-        d d d d d d d d d d d d d d d d 
-        d d d d d d d d d d d d d d d d 
-        e e e e e e e e e e e e e e e e 
-        e e e e e e e e e e e e e e e e 
-        . d d d d d d d d d d d d d d . 
-        . e e e e e e e e d d e d d . . 
-        . . e e e e e e e d d d d . . . 
-        . . . e e e e e e e e e e . . . 
-        . . . . . e e e e e e . . . . . 
+    saturno = sprites.create(img`
+        . . . . . . . . . . . . d . . . 
+        . . . . . . e e 4 4 d d d b . . 
+        . . . . e e e 4 4 4 4 b d d b . 
+        . . . e e e 4 4 4 4 4 e b d d b 
+        . . e e e 4 4 4 4 e e e 4 b d b 
+        . . e e 4 4 4 4 e e e 4 4 e d b 
+        . e e 4 4 4 4 e e e 4 4 e b b d 
+        . e 4 4 4 4 e e 4 4 4 4 e b d b 
+        . 4 4 4 4 e e 4 4 4 4 e b d b . 
+        . 4 4 4 e e e 4 4 4 e b d b 4 . 
+        . d 4 e e e 4 4 4 e b d b 4 . . 
+        d d e e e 4 4 4 e b d b 4 4 . . 
+        b d b 4 4 4 4 e b d b 2 4 . . . 
+        b d d b 4 e e b d b 4 4 . . . . 
+        . b d d b b b d b 4 . . . . . . 
+        . . b d d d d b . . . . . . . . 
         `, SpriteKind.Premio)
-    Colocacion(jupiter)
+    Colocacion(saturno)
 }
 controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     foton = 1
@@ -1139,27 +1164,28 @@ function Nivel_12 () {
     for (let index = 0; index < nivel; index++) {
         Crea_nave()
     }
-    andromeda = sprites.create(img`
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-        1 d d d 1 1 b b b b 1 1 d d d 1 
-        1 d d 1 1 b b 8 8 b b 1 1 d d 1 
-        1 d 1 1 b b 8 8 5 b b b 1 1 d 1 
-        1 1 1 b b b b 8 5 5 b b b 1 1 1 
-        1 1 b b b b b b 5 5 b b b b 1 1 
-        1 b b b 5 5 5 5 8 5 b b 8 b b 1 
-        1 b 8 5 5 5 8 8 8 5 b 8 8 8 b 1 
-        1 b 8 8 8 b 5 8 8 8 5 5 5 8 b 1 
-        1 b b 8 b b 5 8 5 5 5 5 b b b 1 
-        1 1 b b b b 5 5 b b b b b b 1 1 
-        1 1 1 b b b 5 5 8 b b b b 1 1 1 
-        1 d 1 1 b b b 5 8 8 b b 1 1 d 1 
-        1 d d 1 1 b b 8 8 b b 1 1 d d 1 
-        1 d d d 1 1 b b b b 1 1 d d d 1 
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+    agujero_negro = sprites.create(img`
+        1 1 f 1 f f f f f f f f f f f f 
+        1 c c c f 1 1 1 c c f f c c c f 
+        1 1 c 1 f 1 c 1 c c c f f c c f 
+        1 c f 1 c 1 8 1 c c c c f f c f 
+        f f f c c c c 8 f f c c c f f f 
+        f f c c c c c c f f c c c c f f 
+        f c c c f f f f f f c c 8 c c f 
+        f c 8 f f f f f f f c 8 8 8 c f 
+        f c 8 8 8 c f f f f f f f 8 c f 
+        f c c 8 c c f f f f f f c c c f 
+        f f c c c c f f c c c c c c f f 
+        f f f c c c f f 8 c c c c f f f 
+        f c f f c c c f 8 8 c c f f c f 
+        f c c f f c c 8 8 c c f f c c f 
+        f c c c f f c c c c f f c c c f 
+        f f f f f f f f f f f f f f f f 
         `, SpriteKind.Premio)
-    andromeda.setPosition(632, 632)
+    agujero_negro.setPosition(632, 632)
 }
 function Nivel_1 () {
+    Destruye_aliens()
     nivel = 1
     bichos = nivel
     game.setDialogTextColor(9)
@@ -1222,25 +1248,25 @@ function Nivel_1 () {
     for (let index = 0; index < nivel; index++) {
         Crea_alien()
     }
-    mercurio = sprites.create(img`
-        . . . . . . . b b . . . . . . . 
-        . . . . . b b d d b b . . . . . 
-        . . . . b d d d d d d b . . . . 
-        . . . b d d d d d d d d b . . . 
-        . . b b b b b b b b b b b b . . 
-        . b b b b b b b b b b b b b b . 
-        . b a a a a a a a a a a a a b . 
-        b a a a a a a a a a a a a a a b 
-        b c c c c c c c c c c c c c c b 
-        . b c c c c c c c c c c c c b . 
-        . b e e e e e e e e e e e e b . 
-        . . b e e e e e e e e e e b . . 
-        . . . b f f f f f f f f b . . . 
-        . . . . b f f f f f f b . . . . 
-        . . . . . b b f f b b . . . . . 
-        . . . . . . . b b . . . . . . . 
-        `, SpriteKind.Player)
-    Colocacion(mercurio)
+    venus = sprites.create(img`
+        . . . . . . . 4 4 . . . . . . . 
+        . . . . . 4 4 e e 4 4 . . . . . 
+        . . . . 4 e e e e e e 4 . . . . 
+        . . . 4 e e e e e e e e 4 . . . 
+        . . 4 e e e 5 e e 5 e 5 e 4 . . 
+        . 4 e e e e e 5 e e 5 e e e 4 . 
+        . 4 e 5 e e e e 5 5 5 e 5 e 4 . 
+        4 e 5 5 e e e 5 5 5 e 5 e e e 4 
+        4 e 5 5 e 5 5 5 5 e e 5 e e e 4 
+        . 4 e 5 5 5 5 5 e e 5 e 5 e 4 . 
+        . 4 e 5 5 5 e e e 5 e e e e 4 . 
+        . . 4 5 e 5 e e e e e e e 4 . . 
+        . . . 4 e e e e e e e e 4 . . . 
+        . . . . 4 e e e e e e 4 . . . . 
+        . . . . . 4 4 e e 4 4 . . . . . 
+        . . . . . . . 4 4 . . . . . . . 
+        `, SpriteKind.Premio)
+    Colocacion(venus)
 }
 function Selecciona_Nivel (nivel: number) {
     if (nivel == 1) {
@@ -1270,6 +1296,7 @@ function Selecciona_Nivel (nivel: number) {
     }
 }
 function Nivel_2 () {
+    Destruye_aliens()
     nivel = 2
     bichos = nivel
     Tiempo_añadido()
@@ -1333,25 +1360,25 @@ function Nivel_2 () {
     for (let index = 0; index < nivel; index++) {
         Crea_alien()
     }
-    venus = sprites.create(img`
-        . . . . . . . 4 4 . . . . . . . 
-        . . . . . 4 4 e e 4 4 . . . . . 
-        . . . . 4 e e e e e e 4 . . . . 
-        . . . 4 e e e e e e e e 4 . . . 
-        . . 4 e e e 5 e e 5 e 5 e 4 . . 
-        . 4 e e e e e 5 e e 5 e e e 4 . 
-        . 4 e 5 e e e e 5 5 5 e 5 e 4 . 
-        4 e 5 5 e e e 5 5 5 e 5 e e e 4 
-        4 e 5 5 e 5 5 5 5 e e 5 e e e 4 
-        . 4 e 5 5 5 5 5 e e 5 e 5 e 4 . 
-        . 4 e 5 5 5 e e e 5 e e e e 4 . 
-        . . 4 5 e 5 e e e e e e e 4 . . 
-        . . . 4 e e e e e e e e 4 . . . 
-        . . . . 4 e e e e e e 4 . . . . 
-        . . . . . 4 4 e e 4 4 . . . . . 
-        . . . . . . . 4 4 . . . . . . . 
+    tierra = sprites.create(img`
+        . . . . . . . 1 1 . . . . . . . 
+        . . . . . 7 7 7 1 1 8 . . . . . 
+        . . . . 7 7 1 1 8 1 1 8 . . . . 
+        . . . 7 6 7 1 7 8 8 8 8 1 . . . 
+        . . 6 4 4 4 7 7 8 8 8 1 8 4 . . 
+        . 6 6 4 4 4 4 7 8 8 8 8 8 4 4 . 
+        . 8 4 4 7 4 4 8 8 8 8 8 8 8 4 . 
+        8 8 8 8 8 8 7 7 8 8 8 8 8 8 8 8 
+        8 8 8 8 8 8 8 8 1 7 7 8 8 8 8 8 
+        . 8 8 8 8 8 8 8 4 7 7 4 8 8 8 . 
+        . 8 8 8 8 8 8 8 4 4 4 1 8 8 8 . 
+        . . 8 8 8 8 8 8 4 4 8 8 8 8 . . 
+        . . . 1 1 8 8 8 8 4 8 8 8 . . . 
+        . . . . 8 1 1 8 8 1 1 8 . . . . 
+        . . . . . 8 1 1 1 1 8 . . . . . 
+        . . . . . . . 1 1 . . . . . . . 
         `, SpriteKind.Premio)
-    Colocacion(venus)
+    Colocacion(tierra)
 }
 function Nivel_11 () {
     nivel = 11
@@ -1448,25 +1475,25 @@ function Nivel_11 () {
     for (let index = 0; index < nivel; index++) {
         Crea_nave()
     }
-    via_lactea = sprites.create(img`
-        f f f f f f f f f f f f f f f f 
-        f 7 7 7 f f 9 9 9 9 f f 7 7 7 f 
-        f 7 7 f f 9 9 c c 9 9 f f 7 7 f 
-        f 7 f f 9 9 c c 5 9 9 9 f f 7 f 
-        f f f 9 9 9 9 c 5 5 9 9 9 f f f 
-        f f 9 9 9 9 9 9 5 5 9 9 9 9 f f 
-        f 9 9 9 5 5 5 5 c 5 9 9 c 9 9 f 
-        f 9 c 5 5 5 c c c 5 9 c c c 9 f 
-        f 9 c c c 9 5 c c c 5 5 5 c 9 f 
-        f 9 9 c 9 9 5 c 5 5 5 5 9 9 9 f 
-        f f 9 9 9 9 5 5 9 9 9 9 9 9 f f 
-        f f f 9 9 9 5 5 c 9 9 9 9 f f f 
-        f 7 f f 9 9 9 5 c c 9 9 f f 7 f 
-        f 7 7 f f 9 9 c c 9 9 f f 7 7 f 
-        f 7 7 7 f f 9 9 9 9 f f 7 7 7 f 
-        f f f f f f f f f f f f f f f f 
+    andromeda = sprites.create(img`
+        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+        1 d d d 1 1 b b b b 1 1 d d d 1 
+        1 d d 1 1 b b 8 8 b b 1 1 d d 1 
+        1 d 1 1 b b 8 8 5 b b b 1 1 d 1 
+        1 1 1 b b b b 8 5 5 b b b 1 1 1 
+        1 1 b b b b b b 5 5 b b b b 1 1 
+        1 b b b 5 5 5 5 8 5 b b 8 b b 1 
+        1 b 8 5 5 5 8 8 8 5 b 8 8 8 b 1 
+        1 b 8 8 8 b 5 8 8 8 5 5 5 8 b 1 
+        1 b b 8 b b 5 8 5 5 5 5 b b b 1 
+        1 1 b b b b 5 5 b b b b b b 1 1 
+        1 1 1 b b b 5 5 8 b b b b 1 1 1 
+        1 d 1 1 b b b 5 8 8 b b 1 1 d 1 
+        1 d d 1 1 b b 8 8 b b 1 1 d d 1 
+        1 d d d 1 1 b b b b 1 1 d d d 1 
+        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
         `, SpriteKind.Premio)
-    via_lactea.setPosition(120, 472)
+    andromeda.setPosition(120, 472)
 }
 function Tiempo_añadido () {
     if (queda == 0) {
@@ -1478,6 +1505,7 @@ function Tiempo_añadido () {
     }
 }
 function Nivel_3 () {
+    Destruye_aliens()
     nivel = 3
     bichos = nivel
     Tiempo_añadido()
@@ -1541,78 +1569,78 @@ function Nivel_3 () {
     for (let index = 0; index < nivel; index++) {
         Crea_alien()
     }
-    tierra = sprites.create(img`
-        . . . . . . . 1 1 . . . . . . . 
-        . . . . . 7 7 7 1 1 8 . . . . . 
-        . . . . 7 7 1 1 8 1 1 8 . . . . 
-        . . . 7 6 7 1 7 8 8 8 8 1 . . . 
-        . . 6 4 4 4 7 7 8 8 8 1 8 4 . . 
-        . 6 6 4 4 4 4 7 8 8 8 8 8 4 4 . 
-        . 8 4 4 7 4 4 8 8 8 8 8 8 8 4 . 
-        8 8 8 8 8 8 7 7 8 8 8 8 8 8 8 8 
-        8 8 8 8 8 8 8 8 1 7 7 8 8 8 8 8 
-        . 8 8 8 8 8 8 8 4 7 7 4 8 8 8 . 
-        . 8 8 8 8 8 8 8 4 4 4 1 8 8 8 . 
-        . . 8 8 8 8 8 8 4 4 8 8 8 8 . . 
-        . . . 1 1 8 8 8 8 4 8 8 8 . . . 
-        . . . . 8 1 1 8 8 1 1 8 . . . . 
-        . . . . . 8 1 1 1 1 8 . . . . . 
-        . . . . . . . 1 1 . . . . . . . 
+    marte = sprites.create(img`
+        . . . . . . . b 4 . . . . . . . 
+        . . . . . b 4 4 4 4 4 . . . . . 
+        . . . . 4 4 4 4 4 4 4 4 . . . . 
+        . . . 4 4 4 4 4 4 4 4 4 4 . . . 
+        . . 4 4 4 4 4 4 4 4 4 4 4 4 . . 
+        . 4 4 4 4 4 4 b 4 4 4 4 4 4 4 . 
+        . b 4 b 4 b b b 4 4 4 4 4 4 4 . 
+        b 4 4 b b b b 4 4 4 4 4 4 4 4 b 
+        b 4 b b 4 b 4 4 4 b b 4 4 4 4 b 
+        . b 4 4 b 4 b b b b b b 4 4 b . 
+        . b 4 4 b b b b b b b b b 4 b . 
+        . . b 4 4 4 4 4 4 4 4 4 4 b . . 
+        . . . b 4 4 4 4 4 4 4 4 b . . . 
+        . . . . b 4 4 4 4 4 4 4 . . . . 
+        . . . . . b b 4 4 4 4 . . . . . 
+        . . . . . . . 4 b . . . . . . . 
         `, SpriteKind.Premio)
-    Colocacion(tierra)
+    Colocacion(marte)
 }
 function Niveles () {
     if (nivel == 1) {
-        mercurio.destroy()
-        tiempo = 30
+        venus.destroy()
+        tiempo = 60
         Nivel_1()
     } else if (nivel == 2) {
-        venus.destroy()
-        tiempo = 30
+        tierra.destroy()
+        tiempo = 75
         Nivel_2()
     } else if (nivel == 3) {
-        tierra.destroy()
-        tiempo = 30
+        marte.destroy()
+        tiempo = 90
         Nivel_3()
     } else if (nivel == 4) {
-        marte.destroy()
-        tiempo = 45
+        jupiter.destroy()
+        tiempo = 105
         Nivel_4()
     } else if (nivel == 5) {
-        jupiter.destroy()
-        tiempo = 60
+        saturno.destroy()
+        tiempo = 120
         Nivel_5()
     } else if (nivel == 6) {
-        saturno.destroy()
-        tiempo = 60
+        urano.destroy()
+        tiempo = 135
         Nivel_6()
     } else if (nivel == 7) {
-        urano.destroy()
-        tiempo = 60
+        neptuno.destroy()
+        tiempo = 160
         Nivel_7()
     } else if (nivel == 8) {
-        neptuno.destroy()
-        tiempo = 75
+        pluton.destroy()
+        tiempo = 185
         Nivel_8()
     } else if (nivel == 9) {
-        pluton.destroy()
-        tiempo = 90
+        sistema_solar.destroy()
+        tiempo = 210
         Nivel_9()
     } else if (nivel == 10) {
-        sistema_solar.destroy()
-        tiempo = 120
+        via_lactea.destroy()
+        tiempo = 235
         Nivel_10()
     } else if (nivel == 11) {
-        via_lactea.destroy()
-        tiempo = 180
+        andromeda.destroy()
+        tiempo = 260
         Nivel_11()
     } else if (nivel == 12) {
-        andromeda.destroy()
-        tiempo = 200
+        agujero_negro.destroy()
+        tiempo = 285
         Nivel_12()
     } else {
-        mercurio.destroy()
-        tiempo = 30
+        venus.destroy()
+        tiempo = 60
         Nivel_1()
     }
 }
@@ -1640,21 +1668,24 @@ let tipo_pista = 0
 let projectile: Sprite = null
 let nave: Sprite = null
 let foton = 0
+let agujero_negro: Sprite = null
 let andromeda: Sprite = null
 let via_lactea: Sprite = null
 let sistema_solar: Sprite = null
-let pluton: Sprite = null
+let neptuno: Sprite = null
 let urano: Sprite = null
 let saturno: Sprite = null
 let jupiter: Sprite = null
 let marte: Sprite = null
 let tierra: Sprite = null
 let venus: Sprite = null
-let mercurio: Sprite = null
-let neptuno: Sprite = null
+let pluton: Sprite = null
 let bichos = 0
+let bicho3 = 0
 let alien3: Sprite = null
+let bicho2 = 0
 let alien2: Sprite = null
+let bicho1 = 0
 let alien: Sprite = null
 let tipo_alien = 0
 let Tiempos: number[] = []
@@ -1710,59 +1741,56 @@ info.startCountdown(60)
 forever(function () {
     if (controller.left.isPressed() || (controller.right.isPressed() || (controller.up.isPressed() || controller.down.isPressed()))) {
         Claus.setImage(img`
-            . . . . . f f f f . . . . . 
-            . . . f f f 2 2 f f f . . . 
-            . . f f f 2 2 2 2 f f f . . 
-            . f f f e e e e e e f f f . 
-            . f e e 2 2 2 2 2 2 e f f . 
-            f f e 2 f f f f f f 2 e f f 
-            f f f f f e e e e f f f f f 
-            . f e f b f 4 4 f b f e f . 
-            . f e 4 1 f d d f 1 4 e f . 
-            . e f e 4 d d d d 4 e f . . 
-            . e 4 d d e 2 2 2 2 f e f . 
-            . . e d d e 2 2 2 2 f 4 e . 
-            . . . e e f 5 5 4 4 f . . . 
-            . . . . f f f f f f f . . . 
-            . . . . . . . . f f f . . . 
+            . . f f f 2 2 f f f . . 
+            . f f f 2 2 2 2 f f f . 
+            f f f e e e e e e f f f 
+            f e e 2 2 2 2 2 2 e f f 
+            f e 2 f f f f f f 2 e f 
+            f f f f e e e e f f f f 
+            f e f b f 4 4 f b f e f 
+            f e 4 1 f d d f 1 4 e f 
+            e f e 4 d d d d 4 e f . 
+            e 4 d d e 2 2 2 2 f e f 
+            . e d d e 2 2 2 2 f 4 e 
+            . . e e f 5 5 4 4 f . . 
+            . . . f f f f f f f . . 
+            . . . . . . . f f f . . 
             `)
         pause(200)
         Claus.setImage(img`
-            . . . . . f f f f . . . . . 
-            . . . f f f 2 2 f f f . . . 
-            . . f f f 2 2 2 2 f f f . . 
-            . f f f e e e e e e f f f . 
-            . f f e 2 2 2 2 2 2 e e f . 
-            f f e 2 f f f f f f 2 e f f 
-            f f f f f e e e e f f f f f 
-            . f e f b f 4 4 f b f e f . 
-            . f e 4 1 f d d f 1 4 e f . 
-            . . f e 4 d d d d 4 e f e . 
-            . f e f 2 2 2 2 e d d 4 e . 
-            . e 4 f 2 2 2 2 e d d e . . 
-            . . . f 4 4 5 5 f e e . . . 
-            . . . f f f f f f f . . . . 
-            . . . f f f . . . . . . . . 
+            . . f f f 2 2 f f f . . 
+            . f f f 2 2 2 2 f f f . 
+            f f f e e e e e e f f f 
+            f f e 2 2 2 2 2 2 e e f 
+            f e 2 f f f f f f 2 e f 
+            f f f f e e e e f f f f 
+            f e f b f 4 4 f b f e f 
+            f e 4 1 f d d f 1 4 e f 
+            . f e 4 d d d d 4 e f e 
+            f e f 2 2 2 2 e d d 4 e 
+            e 4 f 2 2 2 2 e d d e . 
+            . . f 4 4 5 5 f e e . . 
+            . . f f f f f f f . . . 
+            . . f f f . . . . . . . 
             `)
         pause(200)
     } else {
         Claus.setImage(img`
-            . . . . . . f f f f . . . . . . 
-            . . . . f f f 2 2 f f f . . . . 
-            . . . f f f 2 2 2 2 f f f . . . 
-            . . f f f e e e e e e f f f . . 
-            . . f f e 2 2 2 2 2 2 e e f . . 
-            . . f e 2 f f f f f f 2 e f . . 
-            . . f f f f e e e e f f f f . . 
-            . f f e f b f 4 4 f b f e f f . 
-            . f e e 4 1 f d d f 1 4 e e f . 
-            . . f e e d d d d d d e e f . . 
-            . . . f e e 4 4 4 4 e e f . . . 
-            . . e 4 f 2 2 2 2 2 2 f 4 e . . 
-            . . 4 d f 2 2 2 2 2 2 f d 4 . . 
-            . . 4 4 f 4 4 5 5 4 4 f 4 4 . . 
-            . . . . . f f f f f f . . . . . 
-            . . . . . f f . . f f . . . . . 
+            . . f f f 2 2 f f f . . 
+            . f f f 2 2 2 2 f f f . 
+            f f f e e e e e e f f f 
+            f f e 2 2 2 2 2 2 e e f 
+            f e 2 f f f f f f 2 e f 
+            f f f f e e e e f f f f 
+            f e f b f 4 4 f b f e f 
+            e e 4 1 f d d f 1 4 e e 
+            f e e d d d d d d e e f 
+            . f e e 4 4 4 4 e e f . 
+            e 4 f 2 2 2 2 2 2 f 4 e 
+            4 d f 2 2 2 2 2 2 f d 4 
+            4 4 f 4 4 5 5 4 4 f 4 4 
+            . . . f f f f f f . . . 
+            . . . f f . . f f . . . 
             `)
     }
 })
