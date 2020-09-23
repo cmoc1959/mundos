@@ -32,7 +32,7 @@ function Crea_alien () {
             `, SpriteKind.Enemy)
         alien.follow(Claus, 30)
     } else if (tipo_alien == 2) {
-        alien = sprites.create(img`
+        alien2 = sprites.create(img`
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
             . . . c c . c c . . . . . . . . 
@@ -50,9 +50,9 @@ function Crea_alien () {
             . . . f f f f f f f c c c c c . 
             . . . . . . . . . . . . c c c c 
             `, SpriteKind.Enemy)
-        alien.follow(Claus, 30)
+        alien2.follow(Claus, 30)
     } else if (tipo_alien == 3) {
-        alien = sprites.create(img`
+        alien3 = sprites.create(img`
             . . . . . c c c c c c c . . . . 
             . . . . c 6 7 7 7 7 7 6 c . . . 
             . . . c 7 c 6 6 6 6 c 7 6 c . . 
@@ -70,7 +70,7 @@ function Crea_alien () {
             . f 6 1 1 1 1 1 6 6 6 6 c . . . 
             . . f f c c c c c c c c . . . . 
             `, SpriteKind.Enemy)
-        alien.follow(Claus, 30)
+        alien3.follow(Claus, 30)
     }
     Colocacion(alien)
 }
@@ -80,22 +80,22 @@ function Nivel_8 () {
     Tiempo_añadido()
     game.setDialogTextColor(9)
     game.setDialogCursor(img`
-        5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
-        5 2 2 2 5 5 2 2 2 2 5 5 2 2 2 5 
-        5 2 2 5 5 2 2 c c 2 2 5 5 2 2 5 
-        5 2 5 5 2 2 c c 5 2 2 2 5 5 2 5 
-        5 5 5 2 2 2 2 c 5 5 2 2 2 5 5 5 
-        5 5 2 2 2 2 2 2 5 5 2 2 2 2 5 5 
-        5 2 2 2 5 5 5 5 2 5 2 2 c 2 2 5 
-        5 2 c 5 5 5 2 2 2 5 2 c c c 2 5 
-        5 2 c c c 2 5 2 2 2 5 5 5 c 2 5 
-        5 2 2 c 2 2 5 2 5 5 5 5 2 2 2 5 
-        5 5 2 2 2 2 5 5 2 2 2 2 2 2 5 5 
-        5 5 5 2 2 2 5 5 c 2 2 2 2 5 5 5 
-        5 2 5 5 2 2 2 5 c c 2 2 5 5 2 5 
-        5 2 2 5 5 2 2 c c 2 2 5 5 2 2 5 
-        5 2 2 2 5 5 2 2 2 2 5 5 2 2 2 5 
-        5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . 9 9 9 9 . . . . . . 
+        . . . . 9 9 9 8 8 9 9 9 . . . . 
+        . . . 9 9 9 9 9 9 9 9 9 9 . . . 
+        . . 8 9 9 9 9 8 8 8 1 1 9 9 . . 
+        . . 9 9 9 9 9 8 8 8 1 1 8 9 . . 
+        . 8 9 9 9 9 8 8 8 8 8 8 8 9 9 . 
+        . 8 9 9 9 8 8 8 9 9 9 9 8 9 9 . 
+        . 8 8 9 9 8 8 9 9 9 9 9 9 9 9 . 
+        . 8 8 9 9 8 8 9 9 9 9 9 9 9 9 . 
+        . . 8 8 9 9 8 9 9 9 9 9 8 9 . . 
+        . . 8 8 8 9 8 8 9 9 9 8 9 9 . . 
+        . . . 8 8 8 8 8 8 8 8 8 9 . . . 
+        . . . . 8 8 8 8 8 8 8 8 . . . . 
+        . . . . . . 8 8 8 8 . . . . . . 
+        . . . . . . . . . . . . . . . . 
         `)
     game.setDialogFrame(img`
         2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
@@ -149,25 +149,25 @@ function Nivel_8 () {
     for (let index = 0; index < nivel; index++) {
         Crea_alien()
     }
-    energia_8 = sprites.create(img`
-        5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
-        5 2 2 2 5 5 2 2 2 2 5 5 2 2 2 5 
-        5 2 2 5 5 2 2 c c 2 2 5 5 2 2 5 
-        5 2 5 5 2 2 c c 5 2 2 2 5 5 2 5 
-        5 5 5 2 2 2 2 c 5 5 2 2 2 5 5 5 
-        5 5 2 2 2 2 2 2 5 5 2 2 2 2 5 5 
-        5 2 2 2 5 5 5 5 2 5 2 2 c 2 2 5 
-        5 2 c 5 5 5 2 2 2 5 2 c c c 2 5 
-        5 2 c c c 2 5 2 2 2 5 5 5 c 2 5 
-        5 2 2 c 2 2 5 2 5 5 5 5 2 2 2 5 
-        5 5 2 2 2 2 5 5 2 2 2 2 2 2 5 5 
-        5 5 5 2 2 2 5 5 c 2 2 2 2 5 5 5 
-        5 2 5 5 2 2 2 5 c c 2 2 5 5 2 5 
-        5 2 2 5 5 2 2 c c 2 2 5 5 2 2 5 
-        5 2 2 2 5 5 2 2 2 2 5 5 2 2 2 5 
-        5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+    neptuno = sprites.create(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . 9 9 9 9 . . . . . . 
+        . . . . 9 9 9 8 8 9 9 9 . . . . 
+        . . . 9 9 9 9 9 9 9 9 9 9 . . . 
+        . . 8 9 9 9 9 8 8 8 1 1 9 9 . . 
+        . . 9 9 9 9 9 8 8 8 1 1 8 9 . . 
+        . 8 9 9 9 9 8 8 8 8 8 8 8 9 9 . 
+        . 8 9 9 9 8 8 8 9 9 9 9 8 9 9 . 
+        . 8 8 9 9 8 8 9 9 9 9 9 9 9 9 . 
+        . 8 8 9 9 8 8 9 9 9 9 9 9 9 9 . 
+        . . 8 8 9 9 8 9 9 9 9 9 8 9 . . 
+        . . 8 8 8 9 8 8 9 9 9 8 9 9 . . 
+        . . . 8 8 8 8 8 8 8 8 8 9 . . . 
+        . . . . 8 8 8 8 8 8 8 8 . . . . 
+        . . . . . . 8 8 8 8 . . . . . . 
+        . . . . . . . . . . . . . . . . 
         `, SpriteKind.Premio)
-    energia_8.setPosition(104, 312)
+    neptuno.setPosition(104, 312)
 }
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Premio, function (sprite, otherSprite) {
     if (bichos < 0) {
@@ -175,52 +175,52 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Premio, function (sprite, otherS
     }
     if (bichos == 0) {
         music.magicWand.play()
-        if (otherSprite == cofre) {
-            cofre.destroy()
+        if (otherSprite == mercurio) {
+            mercurio.destroy()
             info.changeScoreBy(1)
             Nivel_2()
-        } else if (otherSprite == pc) {
-            pc.destroy()
+        } else if (otherSprite == venus) {
+            venus.destroy()
             info.changeScoreBy(2)
             Nivel_3()
-        } else if (otherSprite == estante) {
-            estante.destroy()
+        } else if (otherSprite == tierra) {
+            tierra.destroy()
             info.changeScoreBy(3)
             Nivel_4()
-        } else if (otherSprite == perla) {
-            perla.destroy()
+        } else if (otherSprite == marte) {
+            marte.destroy()
             info.changeScoreBy(4)
             Nivel_5()
-        } else if (otherSprite == energia_5) {
-            energia_5.destroy()
+        } else if (otherSprite == jupiter) {
+            jupiter.destroy()
             info.changeScoreBy(5)
             Nivel_6()
-        } else if (otherSprite == energia_6) {
-            energia_6.destroy()
+        } else if (otherSprite == saturno) {
+            saturno.destroy()
             info.changeScoreBy(6)
             Nivel_7()
-        } else if (otherSprite == energia_7) {
-            energia_7.destroy()
+        } else if (otherSprite == urano) {
+            urano.destroy()
             info.changeScoreBy(7)
             Nivel_8()
-        } else if (otherSprite == energia_8) {
-            energia_8.destroy()
+        } else if (otherSprite == neptuno) {
+            neptuno.destroy()
             info.changeScoreBy(8)
             Nivel_9()
-        } else if (otherSprite == energia_9) {
-            energia_9.destroy()
+        } else if (otherSprite == pluton) {
+            pluton.destroy()
             info.changeScoreBy(9)
             Nivel_10()
-        } else if (otherSprite == energia_10) {
-            energia_10.destroy()
+        } else if (otherSprite == sistema_solar) {
+            sistema_solar.destroy()
             info.changeScoreBy(10)
             Nivel_11()
-        } else if (otherSprite == energia_11) {
-            energia_11.destroy()
+        } else if (otherSprite == via_lactea) {
+            via_lactea.destroy()
             info.changeScoreBy(11)
             Nivel_12()
-        } else if (otherSprite == energia_12) {
-            energia_12.destroy()
+        } else if (otherSprite == andromeda) {
+            andromeda.destroy()
             info.changeScoreBy(12)
             game.over(true, effects.confetti)
         }
@@ -258,22 +258,22 @@ function Nivel_6 () {
     Tiempo_añadido()
     game.setDialogTextColor(9)
     game.setDialogCursor(img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . 4 4 4 4 . . . . . . 
-        . . . . 4 4 4 5 5 4 4 4 . . . . 
-        . . . 3 3 3 3 4 4 4 4 4 4 . . . 
-        . . 4 3 3 3 3 2 2 2 1 1 4 4 . . 
-        . . 3 3 3 3 3 2 2 2 1 1 5 4 . . 
-        . 4 3 3 3 3 2 2 2 2 2 5 5 4 4 . 
-        . 4 3 3 3 2 2 2 4 4 4 4 5 4 4 . 
-        . 4 4 3 3 2 2 4 4 4 4 4 4 4 4 . 
-        . 4 2 3 3 2 2 4 4 4 4 4 4 4 4 . 
-        . . 4 2 3 3 2 4 4 4 4 4 2 4 . . 
-        . . 4 2 2 3 2 2 4 4 4 2 4 4 . . 
-        . . . 4 2 2 2 2 2 2 2 2 4 . . . 
-        . . . . 4 4 2 2 2 2 4 4 . . . . 
-        . . . . . . 4 4 4 4 . . . . . . 
-        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . d . . . 
+        . . . . . . e e 4 4 d d d b . . 
+        . . . . e e e 4 4 4 4 b d d b . 
+        . . . e e e 4 4 4 4 4 e b d d b 
+        . . e e e 4 4 4 4 e e e 4 b d b 
+        . . e e 4 4 4 4 e e e 4 4 e d b 
+        . e e 4 4 4 4 e e e 4 4 e b b d 
+        . e 4 4 4 4 e e 4 4 4 4 e b d b 
+        . 4 4 4 4 e e 4 4 4 4 e b d b . 
+        . 4 4 4 e e e 4 4 4 e b d b 4 . 
+        . d 4 e e e 4 4 4 e b d b 4 . . 
+        d d e e e 4 4 4 e b d b 4 4 . . 
+        b d b 4 4 4 4 e b d b 2 4 . . . 
+        b d d b 4 e e b d b 4 4 . . . . 
+        . b d d b b b d b 4 . . . . . . 
+        . . b d d d d b . . . . . . . . 
         `)
     game.setDialogFrame(img`
         2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
@@ -327,25 +327,25 @@ function Nivel_6 () {
     for (let index = 0; index < nivel; index++) {
         Crea_alien()
     }
-    energia_6 = sprites.create(img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . 4 4 4 4 . . . . . . 
-        . . . . 4 4 4 5 5 4 4 4 . . . . 
-        . . . 3 3 3 3 4 4 4 4 4 4 . . . 
-        . . 4 3 3 3 3 2 2 2 1 1 4 4 . . 
-        . . 3 3 3 3 3 2 2 2 1 1 5 4 . . 
-        . 4 3 3 3 3 2 2 2 2 2 5 5 4 4 . 
-        . 4 3 3 3 2 2 2 4 4 4 4 5 4 4 . 
-        . 4 4 3 3 2 2 4 4 4 4 4 4 4 4 . 
-        . 4 2 3 3 2 2 4 4 4 4 4 4 4 4 . 
-        . . 4 2 3 3 2 4 4 4 4 4 2 4 . . 
-        . . 4 2 2 3 2 2 4 4 4 2 4 4 . . 
-        . . . 4 2 2 2 2 2 2 2 2 4 . . . 
-        . . . . 4 4 2 2 2 2 4 4 . . . . 
-        . . . . . . 4 4 4 4 . . . . . . 
-        . . . . . . . . . . . . . . . . 
+    saturno = sprites.create(img`
+        . . . . . . . . . . . . d . . . 
+        . . . . . . e e 4 4 d d d b . . 
+        . . . . e e e 4 4 4 4 b d d b . 
+        . . . e e e 4 4 4 4 4 e b d d b 
+        . . e e e 4 4 4 4 e e e 4 b d b 
+        . . e e 4 4 4 4 e e e 4 4 e d b 
+        . e e 4 4 4 4 e e e 4 4 e b b d 
+        . e 4 4 4 4 e e 4 4 4 4 e b d b 
+        . 4 4 4 4 e e 4 4 4 4 e b d b . 
+        . 4 4 4 e e e 4 4 4 e b d b 4 . 
+        . d 4 e e e 4 4 4 e b d b 4 . . 
+        d d e e e 4 4 4 e b d b 4 4 . . 
+        b d b 4 4 4 4 e b d b 2 4 . . . 
+        b d d b 4 e e b d b 4 4 . . . . 
+        . b d d b b b d b 4 . . . . . . 
+        . . b d d d d b . . . . . . . . 
         `, SpriteKind.Premio)
-    Colocacion(energia_6)
+    Colocacion(saturno)
 }
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
     Fotones(foton)
@@ -359,22 +359,22 @@ function Nivel_7 () {
     Tiempo_añadido()
     game.setDialogTextColor(9)
     game.setDialogCursor(img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . 6 6 6 6 . . . . . . 
-        . . . . 6 6 6 5 5 6 6 6 . . . . 
-        . . . 7 7 7 7 6 6 6 6 6 6 . . . 
-        . . 6 7 7 7 7 8 8 8 1 1 6 6 . . 
-        . . 7 7 7 7 7 8 8 8 1 1 5 6 . . 
-        . 6 7 7 7 7 8 8 8 8 8 5 5 6 6 . 
-        . 6 7 7 7 8 8 8 6 6 6 6 5 6 6 . 
-        . 6 6 7 7 8 8 6 6 6 6 6 6 6 6 . 
-        . 6 8 7 7 8 8 6 6 6 6 6 6 6 6 . 
-        . . 6 8 7 7 8 6 6 6 6 6 8 6 . . 
-        . . 6 8 8 7 8 8 6 6 6 8 6 6 . . 
-        . . . 6 8 8 8 8 8 8 8 8 6 . . . 
-        . . . . 6 6 8 8 8 8 6 6 . . . . 
-        . . . . . . 6 6 6 6 . . . . . . 
-        . . . . . . . . . . . . . . . . 
+        . . . . . 9 9 9 9 9 9 . . . . . 
+        . . . 9 9 9 9 9 9 9 9 9 9 . . . 
+        . . 9 9 9 9 9 9 9 9 9 9 9 9 . . 
+        . 9 9 9 9 9 9 9 9 9 9 9 9 9 9 . 
+        9 9 9 9 9 9 9 9 1 1 9 9 9 9 9 9 
+        9 9 9 9 9 9 9 1 1 1 1 9 9 9 9 9 
+        9 9 9 9 9 9 9 9 1 1 9 9 9 9 9 9 
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+        f 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+        . f 9 9 9 9 9 9 9 9 9 9 9 9 9 . 
+        . f f 9 9 9 9 9 9 9 9 9 9 9 f . 
+        . . f f 9 9 9 9 9 9 9 9 f f f . 
+        . . . f f f f f f f f f f . . . 
+        . . . . . f f f f f f . . . . . 
         `)
     game.setDialogFrame(img`
         2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
@@ -433,25 +433,25 @@ function Nivel_7 () {
     for (let index = 0; index < nivel; index++) {
         Crea_alien()
     }
-    energia_7 = sprites.create(img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . 6 6 6 6 . . . . . . 
-        . . . . 6 6 6 5 5 6 6 6 . . . . 
-        . . . 7 7 7 7 6 6 6 6 6 6 . . . 
-        . . 6 7 7 7 7 8 8 8 1 1 6 6 . . 
-        . . 7 7 7 7 7 8 8 8 1 1 5 6 . . 
-        . 6 7 7 7 7 8 8 8 8 8 5 5 6 6 . 
-        . 6 7 7 7 8 8 8 6 6 6 6 5 6 6 . 
-        . 6 6 7 7 8 8 6 6 6 6 6 6 6 6 . 
-        . 6 8 7 7 8 8 6 6 6 6 6 6 6 6 . 
-        . . 6 8 7 7 8 6 6 6 6 6 8 6 . . 
-        . . 6 8 8 7 8 8 6 6 6 8 6 6 . . 
-        . . . 6 8 8 8 8 8 8 8 8 6 . . . 
-        . . . . 6 6 8 8 8 8 6 6 . . . . 
-        . . . . . . 6 6 6 6 . . . . . . 
-        . . . . . . . . . . . . . . . . 
+    urano = sprites.create(img`
+        . . . . . 9 9 9 9 9 9 . . . . . 
+        . . . 9 9 9 9 9 9 9 9 9 9 . . . 
+        . . 9 9 9 9 9 9 9 9 9 9 9 9 . . 
+        . 9 9 9 9 9 9 9 9 9 9 9 9 9 9 . 
+        9 9 9 9 9 9 9 9 1 1 9 9 9 9 9 9 
+        9 9 9 9 9 9 9 1 1 1 1 9 9 9 9 9 
+        9 9 9 9 9 9 9 9 1 1 9 9 9 9 9 9 
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+        f 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+        . f 9 9 9 9 9 9 9 9 9 9 9 9 9 . 
+        . f f 9 9 9 9 9 9 9 9 9 9 9 f . 
+        . . f f 9 9 9 9 9 9 9 9 f f f . 
+        . . . f f f f f f f f f f . . . 
+        . . . . . f f f f f f . . . . . 
         `, SpriteKind.Premio)
-    Colocacion(energia_7)
+    Colocacion(urano)
 }
 info.onCountdownEnd(function () {
     music.wawawawaa.play()
@@ -566,7 +566,7 @@ function Nivel_10 () {
     for (let index = 0; index < nivel; index++) {
         Crea_nave()
     }
-    energia_10 = sprites.create(img`
+    sistema_solar = sprites.create(img`
         3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
         3 7 7 7 3 3 9 9 9 9 3 3 7 7 7 3 
         3 7 7 3 3 9 9 c c 9 9 3 3 7 7 3 
@@ -584,7 +584,7 @@ function Nivel_10 () {
         3 7 7 7 3 3 9 9 9 9 3 3 7 7 7 3 
         3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
         `, SpriteKind.Premio)
-    energia_10.setPosition(88, 504)
+    sistema_solar.setPosition(88, 504)
 }
 function Fotones (direccion: number) {
     if (direccion == 0) {
@@ -671,22 +671,14 @@ function Nivel_9 () {
     Tiempo_añadido()
     game.setDialogTextColor(9)
     game.setDialogCursor(img`
-        5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
-        5 f f f 5 5 1 1 1 1 5 5 f f f 5 
-        5 f f 5 5 1 1 c c 1 1 5 5 f f 5 
-        5 f 5 5 1 1 c c 5 1 1 1 5 5 f 5 
-        5 5 5 1 1 1 1 c 5 5 1 1 1 5 5 5 
-        5 5 1 1 1 1 1 1 5 5 1 1 1 1 5 5 
-        5 1 1 1 5 5 5 5 f 5 1 1 c 1 1 5 
-        5 1 c 5 5 5 f f f 5 1 c c c 1 5 
-        5 1 c c c 1 5 f f f 5 5 5 c 1 5 
-        5 1 1 c 1 1 5 f 5 5 5 5 1 1 1 5 
-        5 5 1 1 1 1 5 5 1 1 1 1 1 1 5 5 
-        5 5 5 1 1 1 5 5 c 1 1 1 1 5 5 5 
-        5 f 5 5 1 1 1 5 c c 1 1 5 5 f 5 
-        5 f f 5 5 1 1 c c 1 1 5 5 f f 5 
-        5 f f f 5 5 1 1 1 1 5 5 f f f 5 
-        5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+        . . b b b b . . 
+        . b d d d d b . 
+        b d d 3 d d d b 
+        b d 3 d d 1 d b 
+        c d 3 d d 1 d c 
+        c d d 1 1 d d c 
+        . b d d d d b . 
+        . . b b b b . . 
         `)
     game.setDialogFrame(img`
         2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
@@ -750,25 +742,17 @@ function Nivel_9 () {
     for (let index = 0; index < nivel; index++) {
         Crea_alien()
     }
-    energia_9 = sprites.create(img`
-        5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
-        5 f f f 5 5 1 1 1 1 5 5 f f f 5 
-        5 f f 5 5 1 1 c c 1 1 5 5 f f 5 
-        5 f 5 5 1 1 c c 5 1 1 1 5 5 f 5 
-        5 5 5 1 1 1 1 c 5 5 1 1 1 5 5 5 
-        5 5 1 1 1 1 1 1 5 5 1 1 1 1 5 5 
-        5 1 1 1 5 5 5 5 f 5 1 1 c 1 1 5 
-        5 1 c 5 5 5 f f f 5 1 c c c 1 5 
-        5 1 c c c 1 5 f f f 5 5 5 c 1 5 
-        5 1 1 c 1 1 5 f 5 5 5 5 1 1 1 5 
-        5 5 1 1 1 1 5 5 1 1 1 1 1 1 5 5 
-        5 5 5 1 1 1 5 5 c 1 1 1 1 5 5 5 
-        5 f 5 5 1 1 1 5 c c 1 1 5 5 f 5 
-        5 f f 5 5 1 1 c c 1 1 5 5 f f 5 
-        5 f f f 5 5 1 1 1 1 5 5 f f f 5 
-        5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+    pluton = sprites.create(img`
+        . . b b b b . . 
+        . b d d d d b . 
+        b d d 3 d d d b 
+        b d 3 d d 1 d b 
+        c d 3 d d 1 d c 
+        c d d 1 1 d d c 
+        . b d d d d b . 
+        . . b b b b . . 
         `, SpriteKind.Premio)
-    energia_9.setPosition(376, 472)
+    pluton.setPosition(376, 472)
 }
 function Nivel_4 () {
     nivel = 4
@@ -776,22 +760,22 @@ function Nivel_4 () {
     Tiempo_añadido()
     game.setDialogTextColor(9)
     game.setDialogCursor(img`
-        . . . . . f c c c c f . . . . . 
-        . . c c f b b 3 3 b b f c c . . 
-        . c b 3 3 b b c c b b 3 3 b c . 
-        . f 3 c c c b c c b c c c 3 f . 
-        f c b b c c b c c b c c b b c f 
-        c 3 c c b c c c c c c b c c 3 c 
-        c 3 c c c c c c c c c c c c 3 c 
-        . f b b c c c c c c c c b b f . 
-        . . f b b c 8 9 9 8 c b b f . . 
-        . . c c c f 9 3 1 9 f c c c . . 
-        . c 3 f f f 9 3 3 9 f f f 3 c . 
-        c 3 f f f f 8 9 9 8 f f f f 3 c 
-        f 3 c c f f f f f f f f c c 3 f 
-        f b 3 c b b f b b f b b c 3 b f 
-        . c b b 3 3 b 3 3 b 3 3 b b c . 
-        . . f f f f f f f f f f f f . . 
+        . . . . . . . b 4 . . . . . . . 
+        . . . . . b 4 4 4 4 4 . . . . . 
+        . . . . 4 4 4 4 4 4 4 4 . . . . 
+        . . . 4 4 4 4 4 4 4 4 4 4 . . . 
+        . . 4 4 4 4 4 4 4 4 4 4 4 4 . . 
+        . 4 4 4 4 4 4 b 4 4 4 4 4 4 4 . 
+        . b 4 b 4 b b b 4 4 4 4 4 4 4 . 
+        b 4 4 b b b b 4 4 4 4 4 4 4 4 b 
+        b 4 b b 4 b 4 4 4 b b 4 4 4 4 b 
+        . b 4 4 b 4 b b b b b b 4 4 b . 
+        . b 4 4 b b b b b b b b b 4 b . 
+        . . b 4 4 4 4 4 4 4 4 4 4 b . . 
+        . . . b 4 4 4 4 4 4 4 4 b . . . 
+        . . . . b 4 4 4 4 4 4 4 . . . . 
+        . . . . . b b 4 4 4 4 . . . . . 
+        . . . . . . . 4 b . . . . . . . 
         `)
     game.setDialogFrame(img`
         2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
@@ -835,25 +819,25 @@ function Nivel_4 () {
     for (let index = 0; index < nivel; index++) {
         Crea_alien()
     }
-    perla = sprites.create(img`
-        . . . . . f c c c c f . . . . . 
-        . . c c f b b 3 3 b b f c c . . 
-        . c b 3 3 b b c c b b 3 3 b c . 
-        . f 3 c c c b c c b c c c 3 f . 
-        f c b b c c b c c b c c b b c f 
-        c 3 c c b c c c c c c b c c 3 c 
-        c 3 c c c c c c c c c c c c 3 c 
-        . f b b c c c c c c c c b b f . 
-        . . f b b c 8 9 9 8 c b b f . . 
-        . . c c c f 9 3 1 9 f c c c . . 
-        . c 3 f f f 9 3 3 9 f f f 3 c . 
-        c 3 f f f f 8 9 9 8 f f f f 3 c 
-        f 3 c c f f f f f f f f c c 3 f 
-        f b 3 c b b f b b f b b c 3 b f 
-        . c b b 3 3 b 3 3 b 3 3 b b c . 
-        . . f f f f f f f f f f f f . . 
+    marte = sprites.create(img`
+        . . . . . . . b 4 . . . . . . . 
+        . . . . . b 4 4 4 4 4 . . . . . 
+        . . . . 4 4 4 4 4 4 4 4 . . . . 
+        . . . 4 4 4 4 4 4 4 4 4 4 . . . 
+        . . 4 4 4 4 4 4 4 4 4 4 4 4 . . 
+        . 4 4 4 4 4 4 b 4 4 4 4 4 4 4 . 
+        . b 4 b 4 b b b 4 4 4 4 4 4 4 . 
+        b 4 4 b b b b 4 4 4 4 4 4 4 4 b 
+        b 4 b b 4 b 4 4 4 b b 4 4 4 4 b 
+        . b 4 4 b 4 b b b b b b 4 4 b . 
+        . b 4 4 b b b b b b b b b 4 b . 
+        . . b 4 4 4 4 4 4 4 4 4 4 b . . 
+        . . . b 4 4 4 4 4 4 4 4 b . . . 
+        . . . . b 4 4 4 4 4 4 4 . . . . 
+        . . . . . b b 4 4 4 4 . . . . . 
+        . . . . . . . 4 b . . . . . . . 
         `, SpriteKind.Premio)
-    Colocacion(perla)
+    Colocacion(marte)
 }
 function Cambia_naves () {
     for (let index = 0; index < 4; index++) {
@@ -947,22 +931,22 @@ function Nivel_5 () {
     Tiempo_añadido()
     game.setDialogTextColor(9)
     game.setDialogCursor(img`
-        6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 
-        6 9 9 9 6 6 9 9 9 9 6 6 9 9 9 6 
-        6 9 9 6 6 9 9 c c 9 9 6 6 9 9 6 
-        6 9 6 6 9 9 c c 6 9 9 9 6 6 9 6 
-        6 6 6 9 9 9 9 c 6 6 9 9 9 6 6 6 
-        6 6 9 9 9 9 9 9 6 6 9 9 9 9 6 6 
-        6 9 9 9 6 6 6 6 9 6 9 9 c 9 9 6 
-        6 9 c 6 6 6 9 9 9 6 9 c c c 9 6 
-        6 9 c c c 9 6 9 9 9 6 6 6 c 9 6 
-        6 9 9 c 9 9 6 9 6 6 6 6 9 9 9 6 
-        6 6 9 9 9 9 6 6 9 9 9 9 9 9 6 6 
-        6 6 6 9 9 9 6 6 c 9 9 9 9 6 6 6 
-        6 9 6 6 9 9 9 6 c c 9 9 6 6 9 6 
-        6 9 9 6 6 9 9 c c 9 9 6 6 9 9 6 
-        6 9 9 9 6 6 9 9 9 9 6 6 9 9 9 6 
-        6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 
+        . . . . . e e e e e e . . . . . 
+        . . . e e e e e e e e e e . . . 
+        . . d d d d d d d d d d d d . . 
+        . e e e e e e e e e e e e e e . 
+        . d d d d d d d d d d d d d d . 
+        e e e e e e e e e e e e e e e e 
+        e e e e e e e e e e e e e e e e 
+        d d d d d d d d d d d d d d d d 
+        d d d d d d d d d d d d d d d d 
+        e e e e e e e e e e e e e e e e 
+        e e e e e e e e e e e e e e e e 
+        . d d d d d d d d d d d d d d . 
+        . e e e e e e e e d d e d d . . 
+        . . e e e e e e e d d d d . . . 
+        . . . e e e e e e e e e e . . . 
+        . . . . . e e e e e e . . . . . 
         `)
     game.setDialogFrame(img`
         2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
@@ -1007,25 +991,25 @@ function Nivel_5 () {
     for (let index = 0; index < nivel; index++) {
         Crea_alien()
     }
-    energia_5 = sprites.create(img`
-        6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 
-        6 9 9 9 6 6 9 9 9 9 6 6 9 9 9 6 
-        6 9 9 6 6 9 9 c c 9 9 6 6 9 9 6 
-        6 9 6 6 9 9 c c 6 9 9 9 6 6 9 6 
-        6 6 6 9 9 9 9 c 6 6 9 9 9 6 6 6 
-        6 6 9 9 9 9 9 9 6 6 9 9 9 9 6 6 
-        6 9 9 9 6 6 6 6 9 6 9 9 c 9 9 6 
-        6 9 c 6 6 6 9 9 9 6 9 c c c 9 6 
-        6 9 c c c 9 6 9 9 9 6 6 6 c 9 6 
-        6 9 9 c 9 9 6 9 6 6 6 6 9 9 9 6 
-        6 6 9 9 9 9 6 6 9 9 9 9 9 9 6 6 
-        6 6 6 9 9 9 6 6 c 9 9 9 9 6 6 6 
-        6 9 6 6 9 9 9 6 c c 9 9 6 6 9 6 
-        6 9 9 6 6 9 9 c c 9 9 6 6 9 9 6 
-        6 9 9 9 6 6 9 9 9 9 6 6 9 9 9 6 
-        6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 
+    jupiter = sprites.create(img`
+        . . . . . e e e e e e . . . . . 
+        . . . e e e e e e e e e e . . . 
+        . . d d d d d d d d d d d d . . 
+        . e e e e e e e e e e e e e e . 
+        . d d d d d d d d d d d d d d . 
+        e e e e e e e e e e e e e e e e 
+        e e e e e e e e e e e e e e e e 
+        d d d d d d d d d d d d d d d d 
+        d d d d d d d d d d d d d d d d 
+        e e e e e e e e e e e e e e e e 
+        e e e e e e e e e e e e e e e e 
+        . d d d d d d d d d d d d d d . 
+        . e e e e e e e e d d e d d . . 
+        . . e e e e e e e d d d d . . . 
+        . . . e e e e e e e e e e . . . 
+        . . . . . e e e e e e . . . . . 
         `, SpriteKind.Premio)
-    Colocacion(energia_5)
+    Colocacion(jupiter)
 }
 controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     foton = 1
@@ -1155,7 +1139,7 @@ function Nivel_12 () {
     for (let index = 0; index < nivel; index++) {
         Crea_nave()
     }
-    energia_12 = sprites.create(img`
+    andromeda = sprites.create(img`
         1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
         1 d d d 1 1 b b b b 1 1 d d d 1 
         1 d d 1 1 b b 8 8 b b 1 1 d d 1 
@@ -1173,29 +1157,29 @@ function Nivel_12 () {
         1 d d d 1 1 b b b b 1 1 d d d 1 
         1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
         `, SpriteKind.Premio)
-    energia_12.setPosition(632, 632)
+    andromeda.setPosition(632, 632)
 }
 function Nivel_1 () {
     nivel = 1
     bichos = nivel
     game.setDialogTextColor(9)
     game.setDialogCursor(img`
+        . . . . . . . b b . . . . . . . 
+        . . . . . b b d d b b . . . . . 
+        . . . . b d d d d d d b . . . . 
+        . . . b d d d d d d d d b . . . 
+        . . b b b b b b b b b b b b . . 
         . b b b b b b b b b b b b b b . 
-        b e 4 4 4 4 4 4 4 4 4 4 4 4 4 b 
-        b e 4 4 4 4 4 4 4 4 4 4 4 4 e b 
-        b e e 4 4 4 4 4 4 4 4 4 4 e e b 
-        b b b b b b b d d b b b b b b b 
-        . b b b b b b c c b b b b b b . 
-        b c c c c c b c c b c c c c c b 
-        b c c c c c c b b c c c c c c b 
+        . b a a a a a a a a a a a a b . 
+        b a a a a a a a a a a a a a a b 
         b c c c c c c c c c c c c c c b 
-        b c c c c c c c c c c c c c c b 
-        b b b b b b b b b b b b b b b b 
-        b e e e e e e e e e e e e e e b 
-        b e e e e e e e e e e e e e e b 
-        b c e e e e e e e e e e e e c b 
-        b b b b b b b b b b b b b b b b 
-        . b b . . . . . . . . . . b b . 
+        . b c c c c c c c c c c c c b . 
+        . b e e e e e e e e e e e e b . 
+        . . b e e e e e e e e e e b . . 
+        . . . b f f f f f f f f b . . . 
+        . . . . b f f f f f f b . . . . 
+        . . . . . b b f f b b . . . . . 
+        . . . . . . . b b . . . . . . . 
         `)
     game.setDialogFrame(img`
         2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
@@ -1238,25 +1222,25 @@ function Nivel_1 () {
     for (let index = 0; index < nivel; index++) {
         Crea_alien()
     }
-    cofre = sprites.create(img`
+    mercurio = sprites.create(img`
+        . . . . . . . b b . . . . . . . 
+        . . . . . b b d d b b . . . . . 
+        . . . . b d d d d d d b . . . . 
+        . . . b d d d d d d d d b . . . 
+        . . b b b b b b b b b b b b . . 
         . b b b b b b b b b b b b b b . 
-        b e 4 4 4 4 4 4 4 4 4 4 4 4 4 b 
-        b e 4 4 4 4 4 4 4 4 4 4 4 4 e b 
-        b e e 4 4 4 4 4 4 4 4 4 4 e e b 
-        b b b b b b b d d b b b b b b b 
-        . b b b b b b c c b b b b b b . 
-        b c c c c c b c c b c c c c c b 
-        b c c c c c c b b c c c c c c b 
+        . b a a a a a a a a a a a a b . 
+        b a a a a a a a a a a a a a a b 
         b c c c c c c c c c c c c c c b 
-        b c c c c c c c c c c c c c c b 
-        b b b b b b b b b b b b b b b b 
-        b e e e e e e e e e e e e e e b 
-        b e e e e e e e e e e e e e e b 
-        b c e e e e e e e e e e e e c b 
-        b b b b b b b b b b b b b b b b 
-        . b b . . . . . . . . . . b b . 
-        `, SpriteKind.Premio)
-    Colocacion(cofre)
+        . b c c c c c c c c c c c c b . 
+        . b e e e e e e e e e e e e b . 
+        . . b e e e e e e e e e e b . . 
+        . . . b f f f f f f f f b . . . 
+        . . . . b f f f f f f b . . . . 
+        . . . . . b b f f b b . . . . . 
+        . . . . . . . b b . . . . . . . 
+        `, SpriteKind.Player)
+    Colocacion(mercurio)
 }
 function Selecciona_Nivel (nivel: number) {
     if (nivel == 1) {
@@ -1291,22 +1275,22 @@ function Nivel_2 () {
     Tiempo_añadido()
     game.setDialogTextColor(9)
     game.setDialogCursor(img`
-        . . . b b b b b b b b b . . . . 
-        . . b 1 d d d d d d d 1 b . . . 
-        . b 1 1 1 1 1 1 1 1 1 1 1 b . . 
-        . b d b c c c c c c c b d b . . 
-        . b d c 6 6 6 6 6 6 6 c d b . . 
-        . b d c 6 d 6 6 6 6 6 c d b . . 
-        . b d c 6 6 6 6 6 6 6 c d b . . 
-        . b d c 6 6 6 6 6 6 6 c d b . . 
-        . b d c 6 6 6 6 6 6 6 c d b . . 
-        . b d c c c c c c c c c d b . . 
-        . c b b b b b b b b b b b c . . 
-        c b c c c c c c c c c c c b c . 
-        c 1 d d d d d d d d d d d 1 c . 
-        c 1 d 1 1 d 1 1 d 1 1 d 1 1 c . 
-        c b b b b b b b b b b b b b c . 
-        c c c c c c c c c c c c c c c . 
+        . . . . . . . 4 4 . . . . . . . 
+        . . . . . 4 4 e e 4 4 . . . . . 
+        . . . . 4 e e e e e e 4 . . . . 
+        . . . 4 e e e e e e e e 4 . . . 
+        . . 4 e e e 5 e e 5 e 5 e 4 . . 
+        . 4 e e e e e 5 e e 5 e e e 4 . 
+        . 4 e 5 e e e e 5 5 5 e 5 e 4 . 
+        4 e 5 5 e e e 5 5 5 e 5 e e e 4 
+        4 e 5 5 e 5 5 5 5 e e 5 e e e 4 
+        . 4 e 5 5 5 5 5 e e 5 e 5 e 4 . 
+        . 4 e 5 5 5 e e e 5 e e e e 4 . 
+        . . 4 5 e 5 e e e e e e e 4 . . 
+        . . . 4 e e e e e e e e 4 . . . 
+        . . . . 4 e e e e e e 4 . . . . 
+        . . . . . 4 4 e e 4 4 . . . . . 
+        . . . . . . . 4 4 . . . . . . . 
         `)
     game.setDialogFrame(img`
         2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
@@ -1349,25 +1333,25 @@ function Nivel_2 () {
     for (let index = 0; index < nivel; index++) {
         Crea_alien()
     }
-    pc = sprites.create(img`
-        . . . b b b b b b b b b . . . . 
-        . . b 1 d d d d d d d 1 b . . . 
-        . b 1 1 1 1 1 1 1 1 1 1 1 b . . 
-        . b d b c c c c c c c b d b . . 
-        . b d c 6 6 6 6 6 6 6 c d b . . 
-        . b d c 6 d 6 6 6 6 6 c d b . . 
-        . b d c 6 6 6 6 6 6 6 c d b . . 
-        . b d c 6 6 6 6 6 6 6 c d b . . 
-        . b d c 6 6 6 6 6 6 6 c d b . . 
-        . b d c c c c c c c c c d b . . 
-        . c b b b b b b b b b b b c . . 
-        c b c c c c c c c c c c c b c . 
-        c 1 d d d d d d d d d d d 1 c . 
-        c 1 d 1 1 d 1 1 d 1 1 d 1 1 c . 
-        c b b b b b b b b b b b b b c . 
-        c c c c c c c c c c c c c c c . 
+    venus = sprites.create(img`
+        . . . . . . . 4 4 . . . . . . . 
+        . . . . . 4 4 e e 4 4 . . . . . 
+        . . . . 4 e e e e e e 4 . . . . 
+        . . . 4 e e e e e e e e 4 . . . 
+        . . 4 e e e 5 e e 5 e 5 e 4 . . 
+        . 4 e e e e e 5 e e 5 e e e 4 . 
+        . 4 e 5 e e e e 5 5 5 e 5 e 4 . 
+        4 e 5 5 e e e 5 5 5 e 5 e e e 4 
+        4 e 5 5 e 5 5 5 5 e e 5 e e e 4 
+        . 4 e 5 5 5 5 5 e e 5 e 5 e 4 . 
+        . 4 e 5 5 5 e e e 5 e e e e 4 . 
+        . . 4 5 e 5 e e e e e e e 4 . . 
+        . . . 4 e e e e e e e e 4 . . . 
+        . . . . 4 e e e e e e 4 . . . . 
+        . . . . . 4 4 e e 4 4 . . . . . 
+        . . . . . . . 4 4 . . . . . . . 
         `, SpriteKind.Premio)
-    Colocacion(pc)
+    Colocacion(venus)
 }
 function Nivel_11 () {
     nivel = 11
@@ -1464,7 +1448,7 @@ function Nivel_11 () {
     for (let index = 0; index < nivel; index++) {
         Crea_nave()
     }
-    energia_11 = sprites.create(img`
+    via_lactea = sprites.create(img`
         f f f f f f f f f f f f f f f f 
         f 7 7 7 f f 9 9 9 9 f f 7 7 7 f 
         f 7 7 f f 9 9 c c 9 9 f f 7 7 f 
@@ -1482,7 +1466,7 @@ function Nivel_11 () {
         f 7 7 7 f f 9 9 9 9 f f 7 7 7 f 
         f f f f f f f f f f f f f f f f 
         `, SpriteKind.Premio)
-    energia_11.setPosition(120, 472)
+    via_lactea.setPosition(120, 472)
 }
 function Tiempo_añadido () {
     if (queda == 0) {
@@ -1499,30 +1483,22 @@ function Nivel_3 () {
     Tiempo_añadido()
     game.setDialogTextColor(9)
     game.setDialogCursor(img`
-        .cccccccccccccccccccccc.
-        cbddddddddddddddddddddbc
-        cddddddddddddddddddddddc
-        cddddddddddddddddddddddc
-        cddddddddddddddddddddddc
-        cddddddddddddddddddddddc
-        cddddddddddddddddddddddc
-        cbddddddddddddddddddddbc
-        ccbbbbbbbbbbbbbbbbbbbbcc
-        ccffffffffffffffffffffcc
-        cbcc33c6c44c3c7c66c3ccbc
-        cbcc33c6c44c3c7c66c3ccbc
-        fbcc33c6c44ccc7c66c3ccbf
-        fdccccccccccccccccccccdf
-        fdcbbddddddddddddddbbcdf
-        fdffffffffffffffffffffdf
-        fdccc6c33c4c6c44c3c7ccdf
-        fdccc6c33c4c6c44c3c7ccdf
-        fdccc6c33ccc6c44ccc7ccdf
-        fdccccccccccccccccccccdf
-        fdcbbddddddddddddddbbcdf
-        fdcbbddddddddddddddbbcdf
-        fdffffffffffffffffffffdf
-        ffffffffffffffffffffffff
+        . . . . . . . 1 1 . . . . . . . 
+        . . . . . 7 7 7 1 1 8 . . . . . 
+        . . . . 7 7 1 1 8 1 1 8 . . . . 
+        . . . 7 6 7 1 7 8 8 8 8 1 . . . 
+        . . 6 4 4 4 7 7 8 8 8 1 8 4 . . 
+        . 6 6 4 4 4 4 7 8 8 8 8 8 4 4 . 
+        . 8 4 4 7 4 4 8 8 8 8 8 8 8 4 . 
+        8 8 8 8 8 8 7 7 8 8 8 8 8 8 8 8 
+        8 8 8 8 8 8 8 8 1 7 7 8 8 8 8 8 
+        . 8 8 8 8 8 8 8 4 7 7 4 8 8 8 . 
+        . 8 8 8 8 8 8 8 4 4 4 1 8 8 8 . 
+        . . 8 8 8 8 8 8 4 4 8 8 8 8 . . 
+        . . . 1 1 8 8 8 8 4 8 8 8 . . . 
+        . . . . 8 1 1 8 8 1 1 8 . . . . 
+        . . . . . 8 1 1 1 1 8 . . . . . 
+        . . . . . . . 1 1 . . . . . . . 
         `)
     game.setDialogFrame(img`
         2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
@@ -1565,85 +1541,77 @@ function Nivel_3 () {
     for (let index = 0; index < nivel; index++) {
         Crea_alien()
     }
-    estante = sprites.create(img`
-        .cccccccccccccccccccccc.
-        cbddddddddddddddddddddbc
-        cddddddddddddddddddddddc
-        cddddddddddddddddddddddc
-        cddddddddddddddddddddddc
-        cddddddddddddddddddddddc
-        cddddddddddddddddddddddc
-        cbddddddddddddddddddddbc
-        ccbbbbbbbbbbbbbbbbbbbbcc
-        ccffffffffffffffffffffcc
-        cbcc33c6c44c3c7c66c3ccbc
-        cbcc33c6c44c3c7c66c3ccbc
-        fbcc33c6c44ccc7c66c3ccbf
-        fdccccccccccccccccccccdf
-        fdcbbddddddddddddddbbcdf
-        fdffffffffffffffffffffdf
-        fdccc6c33c4c6c44c3c7ccdf
-        fdccc6c33c4c6c44c3c7ccdf
-        fdccc6c33ccc6c44ccc7ccdf
-        fdccccccccccccccccccccdf
-        fdcbbddddddddddddddbbcdf
-        fdcbbddddddddddddddbbcdf
-        fdffffffffffffffffffffdf
-        ffffffffffffffffffffffff
+    tierra = sprites.create(img`
+        . . . . . . . 1 1 . . . . . . . 
+        . . . . . 7 7 7 1 1 8 . . . . . 
+        . . . . 7 7 1 1 8 1 1 8 . . . . 
+        . . . 7 6 7 1 7 8 8 8 8 1 . . . 
+        . . 6 4 4 4 7 7 8 8 8 1 8 4 . . 
+        . 6 6 4 4 4 4 7 8 8 8 8 8 4 4 . 
+        . 8 4 4 7 4 4 8 8 8 8 8 8 8 4 . 
+        8 8 8 8 8 8 7 7 8 8 8 8 8 8 8 8 
+        8 8 8 8 8 8 8 8 1 7 7 8 8 8 8 8 
+        . 8 8 8 8 8 8 8 4 7 7 4 8 8 8 . 
+        . 8 8 8 8 8 8 8 4 4 4 1 8 8 8 . 
+        . . 8 8 8 8 8 8 4 4 8 8 8 8 . . 
+        . . . 1 1 8 8 8 8 4 8 8 8 . . . 
+        . . . . 8 1 1 8 8 1 1 8 . . . . 
+        . . . . . 8 1 1 1 1 8 . . . . . 
+        . . . . . . . 1 1 . . . . . . . 
         `, SpriteKind.Premio)
-    Colocacion(estante)
+    Colocacion(tierra)
 }
 function Niveles () {
     if (nivel == 1) {
-        cofre.destroy()
+        mercurio.destroy()
         tiempo = 30
         Nivel_1()
     } else if (nivel == 2) {
-        pc.destroy()
+        venus.destroy()
         tiempo = 30
         Nivel_2()
     } else if (nivel == 3) {
-        estante.destroy()
+        tierra.destroy()
         tiempo = 30
         Nivel_3()
     } else if (nivel == 4) {
-        perla.destroy()
+        marte.destroy()
         tiempo = 45
         Nivel_4()
     } else if (nivel == 5) {
-        energia_5.destroy()
+        jupiter.destroy()
         tiempo = 60
         Nivel_5()
     } else if (nivel == 6) {
-        energia_6.destroy()
+        saturno.destroy()
         tiempo = 60
         Nivel_6()
     } else if (nivel == 7) {
-        energia_7.destroy()
+        urano.destroy()
         tiempo = 60
         Nivel_7()
     } else if (nivel == 8) {
-        energia_8.destroy()
+        neptuno.destroy()
         tiempo = 75
         Nivel_8()
     } else if (nivel == 9) {
-        energia_9.destroy()
+        pluton.destroy()
         tiempo = 90
         Nivel_9()
     } else if (nivel == 10) {
-        energia_10.destroy()
+        sistema_solar.destroy()
         tiempo = 120
         Nivel_10()
     } else if (nivel == 11) {
-        energia_11.destroy()
+        via_lactea.destroy()
         tiempo = 180
         Nivel_11()
     } else if (nivel == 12) {
-        energia_12.destroy()
+        andromeda.destroy()
         tiempo = 200
         Nivel_12()
     } else {
-        cofre.destroy()
+        mercurio.destroy()
         tiempo = 30
         Nivel_1()
     }
@@ -1656,7 +1624,7 @@ function Cambia_aliens () {
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
     music.baDing.play()
     otherSprite.destroy(effects.spray, 500)
-    if (otherSprite == alien) {
+    if (otherSprite == alien || (otherSprite == alien2 || otherSprite == alien3)) {
         info.changeScoreBy(1)
         bichos += -1
     }
@@ -1672,19 +1640,21 @@ let tipo_pista = 0
 let projectile: Sprite = null
 let nave: Sprite = null
 let foton = 0
-let energia_12: Sprite = null
-let energia_11: Sprite = null
-let energia_10: Sprite = null
-let energia_9: Sprite = null
-let energia_7: Sprite = null
-let energia_6: Sprite = null
-let energia_5: Sprite = null
-let perla: Sprite = null
-let estante: Sprite = null
-let pc: Sprite = null
-let cofre: Sprite = null
-let energia_8: Sprite = null
+let andromeda: Sprite = null
+let via_lactea: Sprite = null
+let sistema_solar: Sprite = null
+let pluton: Sprite = null
+let urano: Sprite = null
+let saturno: Sprite = null
+let jupiter: Sprite = null
+let marte: Sprite = null
+let tierra: Sprite = null
+let venus: Sprite = null
+let mercurio: Sprite = null
+let neptuno: Sprite = null
 let bichos = 0
+let alien3: Sprite = null
+let alien2: Sprite = null
 let alien: Sprite = null
 let tipo_alien = 0
 let Tiempos: number[] = []
@@ -1736,7 +1706,7 @@ Tiempos = [
 260,
 285
 ]
-info.startCountdown(30)
+info.startCountdown(60)
 forever(function () {
     if (controller.left.isPressed() || (controller.right.isPressed() || (controller.up.isPressed() || controller.down.isPressed()))) {
         Claus.setImage(img`
