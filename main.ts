@@ -1,9 +1,8 @@
 namespace SpriteKind {
     export const Premio = SpriteKind.create()
 }
-function Crea_alien () {
-    tipo_alien = randint(1, 3)
-    if (tipo_alien == 1) {
+function Crea_alien (num_bichos: number) {
+    if (num_bichos >= 1) {
         alien = sprites.create(img`
             ........................
             ........................
@@ -30,10 +29,10 @@ function Crea_alien () {
             ........................
             ........................
             `, SpriteKind.Enemy)
-        bicho1 = 1
         Colocacion(alien)
-        alien.follow(Claus, 20)
-    } else if (tipo_alien == 2) {
+        alien.follow(Claus, 15)
+    }
+    if (num_bichos >= 2) {
         alien2 = sprites.create(img`
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
@@ -52,10 +51,10 @@ function Crea_alien () {
             . . . f f f f f f f c c c c c . 
             . . . . . . . . . . . . c c c c 
             `, SpriteKind.Enemy)
-        bicho2 = 1
         Colocacion(alien2)
-        alien2.follow(Claus, 20)
-    } else if (tipo_alien == 3) {
+        alien2.follow(Claus, 15)
+    }
+    if (num_bichos >= 3) {
         alien3 = sprites.create(img`
             . . . . . c c c c c c c . . . . 
             . . . . c 6 7 7 7 7 7 6 c . . . 
@@ -74,13 +73,137 @@ function Crea_alien () {
             . f 6 1 1 1 1 1 6 6 6 6 c . . . 
             . . f f c c c c c c c c . . . . 
             `, SpriteKind.Enemy)
-        bicho3 = 1
         Colocacion(alien3)
-        alien3.follow(Claus, 20)
+        alien3.follow(Claus, 15)
+    }
+    if (num_bichos >= 4) {
+        alien4 = sprites.create(img`
+            . . c c . . c c . . . . . . . . 
+            . . c 3 c c 3 c c c . . . . . . 
+            . c b 3 b c 3 b c c c . . . . . 
+            . c b b b b b b b b f f . . . . 
+            c c b b b b b b b b f f . . . . 
+            c b 1 b b b 1 b b c f f f . . . 
+            c b b b b b b b b f f f f . . . 
+            f b c b b b c b c c b b b . . . 
+            f b 1 f f f 1 b f c c c c . . . 
+            . f b b b b b b f b b c c . . . 
+            c c f b b b b b c c b b c . . . 
+            c c c f f f f f f c c b b c . . 
+            . c c c . . . . . . c c c c c . 
+            . . c c c . . . . . . . c c c c 
+            `, SpriteKind.Enemy)
+        Colocacion(alien4)
+        alien4.follow(Claus, 15)
+    }
+    if (num_bichos >= 5) {
+        alien5 = sprites.create(img`
+            . . f f f . . . . . . . . f f f 
+            . f f c c . . . . . . f c b b c 
+            f f c c . . . . . . f c b b c . 
+            f c f c . . . . . . f b c c c . 
+            f f f c c . c c . f c b b c c . 
+            f f c 3 c c 3 c c f b c b b c . 
+            f f b 3 b c 3 b c f b c c b c . 
+            . c b b b b b b c b b c c c . . 
+            . c 1 b b b 1 b b c c c c . . . 
+            c b b b b b b b b b c c . . . . 
+            c b c b b b c b b b b f . . . . 
+            f b 1 f f f 1 b b b b f c . . . 
+            f b b b b b b b b b b f c c . . 
+            . f b b b b b b b b c f . . . . 
+            . . f b b b b b b c f . . . . . 
+            . . . f f f f f f f . . . . . . 
+            `, SpriteKind.Enemy)
+        Colocacion(alien5)
+        alien5.follow(Claus, 15)
+    }
+    if (num_bichos >= 6) {
+        alien6 = sprites.create(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . c c . . . 
+            . . . . . . . c c c c 6 3 c . . 
+            . . . . . . c 6 3 3 3 3 6 c . . 
+            . . . . . c 6 6 3 3 3 3 3 3 c . 
+            . . . . c 6 6 6 6 3 3 3 3 3 3 c 
+            . c c c c c 6 6 c c 3 3 3 3 3 c 
+            b 5 5 c 3 3 c c 5 5 c 3 3 3 c c 
+            f f 5 c c c 3 c 5 f f 6 6 6 c c 
+            f f 5 c c c c c 5 f f 3 3 3 3 c 
+            . b 5 5 3 c 3 5 5 c 3 3 3 3 3 c 
+            . c 4 4 5 5 5 5 4 c c 3 3 3 c . 
+            c 4 5 5 4 4 4 4 5 5 4 c b b . . 
+            c 5 5 5 c 4 c 5 5 5 c 4 c 5 c . 
+            c 5 5 5 5 c 5 5 5 5 c 4 c 5 c . 
+            . c c c c c c c c c . . c c c . 
+            `, SpriteKind.Enemy)
+        Colocacion(alien6)
+        alien6.follow(Claus, 15)
+    }
+    if (num_bichos >= 7) {
+        alien7 = sprites.create(img`
+            . b b d d b b . 
+            b 1 1 3 3 1 1 b 
+            b 1 3 5 5 3 1 b 
+            b d 3 5 5 3 d b 
+            c 1 1 d d 1 1 c 
+            c d 1 d d 1 d c 
+            . c c 7 6 c c . 
+            . . 6 7 6 . . . 
+            . . 6 6 8 8 8 6 
+            . . 6 8 7 7 7 6 
+            . . 8 7 7 7 6 . 
+            . . 8 8 8 6 . . 
+            `, SpriteKind.Enemy)
+        Colocacion(alien7)
+        alien7.follow(Claus, 15)
+    }
+    if (num_bichos >= 8) {
+        alien8 = sprites.create(img`
+            . . . c c c c c c . . . . . . . 
+            . . c 6 7 7 7 7 6 c . . . . . . 
+            . c 7 7 7 7 7 7 7 7 c . . . . . 
+            c 6 7 7 7 7 7 7 7 7 6 c . . . . 
+            c 7 c 6 6 6 6 c 7 7 7 c . . . . 
+            f 7 6 f 6 6 f 6 7 7 7 f . . . . 
+            f 7 7 7 7 7 7 7 7 7 7 f . . . . 
+            . f 7 7 7 7 6 c 7 7 6 f . . . . 
+            . . f c c c c 7 7 6 f c c c . . 
+            . . c 6 2 7 7 7 f c c 7 7 7 c . 
+            . c 6 7 7 2 7 7 c f 6 7 7 7 7 c 
+            . c 1 1 1 1 7 6 6 c 6 6 6 c c c 
+            . c 1 1 1 1 1 6 6 6 6 6 6 c . . 
+            . c 6 1 1 1 1 1 6 6 6 6 6 c . . 
+            . . c 6 1 1 1 1 1 7 6 6 c c . . 
+            . . . c c c c c c c c c c . . . 
+            `, SpriteKind.Enemy)
+        Colocacion(alien8)
+        alien8.follow(Claus, 15)
+    }
+    if (num_bichos >= 9) {
+        alien9 = sprites.create(img`
+            . . . . f f f f f . . . . . 
+            . . f f 1 1 1 1 b f f . . . 
+            . f b 1 1 1 1 1 1 1 b f . . 
+            . f 1 1 1 1 1 1 1 1 1 f . . 
+            f d 1 1 1 1 1 1 1 f f f f . 
+            f d 1 1 1 d d 1 c 1 1 1 b f 
+            f b 1 1 f c d f 1 b 1 b f f 
+            f 1 1 1 1 1 b f b f b f f . 
+            f 1 b 1 b d f c f f f f . . 
+            f b f b f c f c c c f . . . 
+            f f f f f f f f f f . . . . 
+            . . . f f f f f f . . . . . 
+            . . . f f f f f f . . . . . 
+            . . . f f f f f f f . . f . 
+            . . . . f f f f f f f f f . 
+            . . . . . f f f f f f f . . 
+            `, SpriteKind.Enemy)
+        Colocacion(alien9)
+        alien9.follow(Claus, 15)
     }
 }
 function Nivel_8 () {
-    Destruye_aliens()
     nivel = 8
     bichos = nivel
     Tiempo_añadido()
@@ -152,9 +275,7 @@ function Nivel_8 () {
         222222222222222222222
         `, [myTiles.transparency16,sprites.dungeon.floorLight2,sprites.vehicle.roadHorizontal,sprites.vehicle.roadVertical,sprites.vehicle.roadTurn1,sprites.vehicle.roadTurn2,sprites.vehicle.roadTurn3,sprites.vehicle.roadTurn4,myTiles.tile1,sprites.vehicle.roadIntersection3,sprites.vehicle.roadIntersection1,sprites.vehicle.roadIntersection2,sprites.vehicle.roadIntersection4], TileScale.Sixteen))
     Claus.setPosition(184, 88)
-    for (let index = 0; index < nivel; index++) {
-        Crea_alien()
-    }
+    Crea_alien(nivel)
     pluton = sprites.create(img`
         . . b b b b . . 
         . b d d d d b . 
@@ -169,51 +290,62 @@ function Nivel_8 () {
 }
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Premio, function (sprite, otherSprite) {
     music.magicWand.play()
-    if (otherSprite == venus) {
+    if (otherSprite == venus && bichos == 0) {
         venus.destroy()
         info.changeScoreBy(1)
-        Nivel_2()
-    } else if (otherSprite == tierra) {
+        Selecciona_Nivel(2)
+    }
+    if (otherSprite == tierra && bichos == 0) {
         tierra.destroy()
         info.changeScoreBy(2)
-        Nivel_3()
-    } else if (otherSprite == marte) {
+        Selecciona_Nivel(3)
+    }
+    if (otherSprite == marte && bichos == 0) {
         marte.destroy()
         info.changeScoreBy(3)
-        Nivel_4()
-    } else if (otherSprite == jupiter) {
+        Selecciona_Nivel(4)
+    }
+    if (otherSprite == jupiter && bichos == 0) {
         jupiter.destroy()
         info.changeScoreBy(4)
-        Nivel_5()
-    } else if (otherSprite == saturno) {
+        Selecciona_Nivel(5)
+    }
+    if (otherSprite == saturno && bichos == 0) {
         saturno.destroy()
         info.changeScoreBy(5)
-        Nivel_6()
-    } else if (otherSprite == urano) {
+        Selecciona_Nivel(6)
+    }
+    if (otherSprite == urano && bichos == 0) {
         urano.destroy()
         info.changeScoreBy(6)
-        Nivel_7()
-    } else if (otherSprite == neptuno) {
+        Selecciona_Nivel(7)
+    }
+    if (otherSprite == neptuno && bichos == 0) {
         neptuno.destroy()
         info.changeScoreBy(7)
-        Nivel_8()
-    } else if (otherSprite == pluton) {
+        Selecciona_Nivel(8)
+    }
+    if (otherSprite == pluton && bichos == 0) {
         pluton.destroy()
         info.changeScoreBy(8)
-        Nivel_9()
-    } else if (otherSprite == sistema_solar) {
+        Selecciona_Nivel(9)
+    }
+    if (otherSprite == sistema_solar && bichos == 0) {
         sistema_solar.destroy()
         info.changeScoreBy(9)
-        Nivel_10()
-    } else if (otherSprite == via_lactea) {
+        Selecciona_Nivel(10)
+    }
+    if (otherSprite == via_lactea && bichos == 0) {
         via_lactea.destroy()
         info.changeScoreBy(10)
-        Nivel_11()
-    } else if (otherSprite == andromeda) {
+        Selecciona_Nivel(11)
+    }
+    if (otherSprite == andromeda && bichos == 0) {
         andromeda.destroy()
         info.changeScoreBy(11)
-        Nivel_12()
-    } else if (otherSprite == agujero_negro) {
+        Selecciona_Nivel(12)
+    }
+    if (otherSprite == agujero_negro && bichos == 0) {
         agujero_negro.destroy()
         info.changeScoreBy(12)
         game.over(true, effects.confetti)
@@ -242,11 +374,10 @@ function Crea_nave () {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         `, SpriteKind.Enemy)
-    nave.follow(Claus, 30)
+    nave.follow(Claus, 15)
     Colocacion(nave)
 }
 function Nivel_6 () {
-    Destruye_aliens()
     nivel = 6
     bichos = nivel
     Tiempo_añadido()
@@ -318,9 +449,7 @@ function Nivel_6 () {
         222222222222222222222
         `, [myTiles.transparency16,sprites.vehicle.roadVertical,sprites.vehicle.roadTurn3,sprites.vehicle.roadHorizontal,sprites.vehicle.roadTurn4,sprites.vehicle.roadTurn1,sprites.vehicle.roadIntersection2,sprites.vehicle.roadTurn2,sprites.vehicle.roadIntersection3,myTiles.tile1,sprites.vehicle.roadIntersection4,sprites.vehicle.roadIntersection1,sprites.castle.tilePath5], TileScale.Sixteen))
     Colocacion(Claus)
-    for (let index = 0; index < nivel; index++) {
-        Crea_alien()
-    }
+    Crea_alien(nivel)
     urano = sprites.create(img`
         . . . . . 9 9 9 9 9 9 . . . . . 
         . . . 9 9 9 9 9 9 9 9 9 9 . . . 
@@ -344,25 +473,39 @@ function Nivel_6 () {
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
     Fotones(foton)
 })
-function Destruye_aliens () {
-    if (bicho1 == 1) {
+function Destruye_aliens (num_alien: number) {
+    if (num_alien <= 1) {
         alien.destroy()
-        bicho1 = 0
     }
-    if (bicho2 == 1) {
+    if (num_alien == 2) {
         alien2.destroy()
-        bicho2 = 0
     }
-    if (bicho3 == 1) {
+    if (num_alien == 3) {
         alien3.destroy()
-        bicho3 = 0
+    }
+    if (num_alien == 4) {
+        alien4.destroy()
+    }
+    if (num_alien == 5) {
+        alien5.destroy()
+    }
+    if (num_alien == 6) {
+        alien6.destroy()
+    }
+    if (num_alien == 7) {
+        alien7.destroy()
+    }
+    if (num_alien == 8) {
+        alien8.destroy()
+    }
+    if (num_alien == 9) {
+        alien9.destroy()
     }
 }
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     foton = 2
 })
 function Nivel_7 () {
-    Destruye_aliens()
     nivel = 7
     bichos = nivel
     Tiempo_añadido()
@@ -439,9 +582,7 @@ function Nivel_7 () {
         22222222222222222222222222222222
         `, [myTiles.transparency16,sprites.builtin.brick,sprites.vehicle.roadTurn1,sprites.vehicle.roadTurn2,sprites.vehicle.roadVertical,sprites.vehicle.roadHorizontal,sprites.vehicle.roadIntersection3,sprites.vehicle.roadIntersection2,sprites.vehicle.roadTurn3,sprites.vehicle.roadIntersection1,sprites.vehicle.roadTurn4,sprites.vehicle.roadIntersection4], TileScale.Sixteen))
     Colocacion(Claus)
-    for (let index = 0; index < nivel; index++) {
-        Crea_alien()
-    }
+    Crea_alien(nivel)
     neptuno = sprites.create(img`
         . . . . . . . . . . . . . . . . 
         . . . . . . 9 9 9 9 . . . . . . 
@@ -491,7 +632,6 @@ function Crea_Claus () {
     scene.cameraFollowSprite(Claus)
 }
 function Nivel_10 () {
-    Destruye_aliens()
     nivel = 10
     bichos = nivel
     Tiempo_añadido()
@@ -676,7 +816,6 @@ function Fotones (direccion: number) {
     }
 }
 function Nivel_9 () {
-    Destruye_aliens()
     nivel = 9
     bichos = nivel
     Tiempo_añadido()
@@ -750,9 +889,7 @@ function Nivel_9 () {
         22222222222222222222222222222
         `, [myTiles.transparency16,myTiles.tile1,sprites.vehicle.roadVertical,sprites.vehicle.roadHorizontal,sprites.vehicle.roadTurn2,sprites.vehicle.roadTurn4,sprites.vehicle.roadTurn1,sprites.vehicle.roadTurn3,sprites.vehicle.roadIntersection1,sprites.vehicle.roadIntersection3,sprites.vehicle.roadIntersection4,sprites.vehicle.roadIntersection2,sprites.dungeon.darkGroundCenter], TileScale.Sixteen))
     Claus.setPosition(184, 120)
-    for (let index = 0; index < nivel; index++) {
-        Crea_alien()
-    }
+    Crea_alien(nivel)
     sistema_solar = sprites.create(img`
         3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
         3 7 7 7 3 3 9 9 9 9 3 3 7 7 7 3 
@@ -774,7 +911,6 @@ function Nivel_9 () {
     sistema_solar.setPosition(376, 472)
 }
 function Nivel_4 () {
-    Destruye_aliens()
     nivel = 4
     bichos = nivel
     Tiempo_añadido()
@@ -836,9 +972,7 @@ function Nivel_4 () {
         2 2 2 2 2 2 2 2 2 2 2 2 2 2 
         `, [myTiles.transparency16,sprites.dungeon.floorDarkDiamond,myTiles.tile1,sprites.vehicle.roadHorizontal,sprites.vehicle.roadVertical,sprites.vehicle.roadTurn3,sprites.vehicle.roadTurn1,sprites.vehicle.roadTurn2,sprites.vehicle.roadTurn4,sprites.vehicle.roadIntersection3,sprites.vehicle.roadIntersection2,sprites.vehicle.roadIntersection1,sprites.vehicle.roadIntersection4], TileScale.Sixteen))
     Colocacion(Claus)
-    for (let index = 0; index < nivel; index++) {
-        Crea_alien()
-    }
+    Crea_alien(nivel)
     jupiter = sprites.create(img`
         . . . . . e e e e e e . . . . . 
         . . . e e e e e e e e e e . . . 
@@ -950,7 +1084,6 @@ function Leyenda () {
     game.showLongText("Para poder viajar a través del universo debes encontrar los portales de hiper-espacio.", DialogLayout.Full)
 }
 function Nivel_5 () {
-    Destruye_aliens()
     nivel = 5
     bichos = nivel
     Tiempo_añadido()
@@ -1013,9 +1146,7 @@ function Nivel_5 () {
         2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
         `, [myTiles.transparency16,sprites.dungeon.floorLight0,sprites.vehicle.roadHorizontal,sprites.vehicle.roadVertical,sprites.vehicle.roadIntersection4,sprites.vehicle.roadTurn3,sprites.vehicle.roadIntersection3,sprites.vehicle.roadTurn4,sprites.vehicle.roadIntersection2,sprites.vehicle.roadTurn2,sprites.vehicle.roadTurn1], TileScale.Sixteen))
     Colocacion(Claus)
-    for (let index = 0; index < nivel; index++) {
-        Crea_alien()
-    }
+    Crea_alien(nivel)
     saturno = sprites.create(img`
         . . . . . . . . . . . . d . . . 
         . . . . . . e e 4 4 d d d b . . 
@@ -1185,7 +1316,6 @@ function Nivel_12 () {
     agujero_negro.setPosition(632, 632)
 }
 function Nivel_1 () {
-    Destruye_aliens()
     nivel = 1
     bichos = nivel
     game.setDialogTextColor(9)
@@ -1245,9 +1375,7 @@ function Nivel_1 () {
         2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
         `, [myTiles.transparency16,sprites.vehicle.roadTurn1,sprites.vehicle.roadTurn2,sprites.vehicle.roadTurn3,sprites.vehicle.roadTurn4,sprites.vehicle.roadIntersection3,sprites.vehicle.roadIntersection1,sprites.vehicle.roadIntersection2,sprites.vehicle.roadIntersection4,sprites.vehicle.roadVertical,sprites.vehicle.roadHorizontal,sprites.dungeon.greenOuterNorthEast,sprites.dungeon.greenOuterSouthWest,sprites.dungeon.greenOuterSouthEast,sprites.dungeon.greenOuterNorthWest,sprites.dungeon.greenOuterNorth0,sprites.dungeon.greenOuterEast0,sprites.dungeon.greenOuterSouth0,sprites.dungeon.greenOuterWest1], TileScale.Sixteen))
     Colocacion(Claus)
-    for (let index = 0; index < nivel; index++) {
-        Crea_alien()
-    }
+    Crea_alien(1)
     venus = sprites.create(img`
         . . . . . . . 4 4 . . . . . . . 
         . . . . . 4 4 e e 4 4 . . . . . 
@@ -1296,7 +1424,6 @@ function Selecciona_Nivel (nivel: number) {
     }
 }
 function Nivel_2 () {
-    Destruye_aliens()
     nivel = 2
     bichos = nivel
     Tiempo_añadido()
@@ -1357,9 +1484,7 @@ function Nivel_2 () {
         2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
         `, [myTiles.transparency16,sprites.dungeon.greenOuterNorthWest,sprites.dungeon.greenOuterNorth0,sprites.dungeon.greenOuterSouth0,sprites.dungeon.greenOuterEast0,sprites.dungeon.greenOuterWest1,sprites.dungeon.greenOuterNorthEast,sprites.dungeon.greenOuterSouthEast,sprites.dungeon.greenOuterSouthWest,sprites.vehicle.roadTurn1,sprites.vehicle.roadTurn2,sprites.vehicle.roadTurn3,sprites.vehicle.roadTurn4,sprites.vehicle.roadVertical,sprites.vehicle.roadHorizontal,sprites.vehicle.roadIntersection1,sprites.vehicle.roadIntersection3,sprites.vehicle.roadIntersection4,sprites.vehicle.roadIntersection2], TileScale.Sixteen))
     Colocacion(Claus)
-    for (let index = 0; index < nivel; index++) {
-        Crea_alien()
-    }
+    Crea_alien(nivel)
     tierra = sprites.create(img`
         . . . . . . . 1 1 . . . . . . . 
         . . . . . 7 7 7 1 1 8 . . . . . 
@@ -1505,7 +1630,6 @@ function Tiempo_añadido () {
     }
 }
 function Nivel_3 () {
-    Destruye_aliens()
     nivel = 3
     bichos = nivel
     Tiempo_añadido()
@@ -1566,9 +1690,7 @@ function Nivel_3 () {
         2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
         `, [myTiles.transparency16,sprites.vehicle.roadTurn1,sprites.vehicle.roadTurn2,sprites.vehicle.roadTurn3,sprites.vehicle.roadTurn4,sprites.vehicle.roadIntersection1,sprites.vehicle.roadIntersection4,sprites.vehicle.roadVertical,sprites.vehicle.roadHorizontal,sprites.vehicle.roadIntersection2,sprites.vehicle.roadIntersection3], TileScale.Sixteen))
     Colocacion(Claus)
-    for (let index = 0; index < nivel; index++) {
-        Crea_alien()
-    }
+    Crea_alien(nivel)
     marte = sprites.create(img`
         . . . . . . . b 4 . . . . . . . 
         . . . . . b 4 4 4 4 4 . . . . . 
@@ -1651,14 +1773,37 @@ function Cambia_aliens () {
 }
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
     music.baDing.play()
+    bichos += -1
     otherSprite.destroy(effects.spray, 500)
-    if (otherSprite == alien || (otherSprite == alien2 || otherSprite == alien3)) {
+    if (otherSprite == alien) {
         info.changeScoreBy(1)
-        bichos += -1
+    }
+    if (otherSprite == alien2) {
+        info.changeScoreBy(2)
+    }
+    if (otherSprite == alien3) {
+        info.changeScoreBy(3)
+    }
+    if (otherSprite == alien4) {
+        info.changeScoreBy(4)
+    }
+    if (otherSprite == alien5) {
+        info.changeScoreBy(5)
+    }
+    if (otherSprite == alien6) {
+        info.changeScoreBy(6)
+    }
+    if (otherSprite == alien7) {
+        info.changeScoreBy(7)
+    }
+    if (otherSprite == alien8) {
+        info.changeScoreBy(8)
+    }
+    if (otherSprite == alien9) {
+        info.changeScoreBy(9)
     }
     if (otherSprite == nave) {
-        info.changeScoreBy(2)
-        bichos += -1
+        info.changeScoreBy(10)
     }
 })
 let tiempo = 0
@@ -1681,13 +1826,15 @@ let tierra: Sprite = null
 let venus: Sprite = null
 let pluton: Sprite = null
 let bichos = 0
-let bicho3 = 0
+let alien9: Sprite = null
+let alien8: Sprite = null
+let alien7: Sprite = null
+let alien6: Sprite = null
+let alien5: Sprite = null
+let alien4: Sprite = null
 let alien3: Sprite = null
-let bicho2 = 0
 let alien2: Sprite = null
-let bicho1 = 0
 let alien: Sprite = null
-let tipo_alien = 0
 let Tiempos: number[] = []
 let puntuacion = 0
 let Claus: Sprite = null
